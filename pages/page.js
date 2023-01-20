@@ -24,7 +24,7 @@ const Page = () => {
         }
         `}
   </style>
-    <div className='part1 h-screen bg-black'>
+    <div className='part1 h-screen bg-black '>
          <div className={styles.container}>
           <div className={styles.banner}>
             <a className={styles.bannera}><picture><img src="/title.png" alt="Girl in a jacket" style={mystyle}/></picture></a>

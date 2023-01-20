@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+/* * {
+    box-sizing: border-box;
+    background-color: black;
+} */
+
+.body {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("/background.svg");
+    justify-content: center;
+
+    box-sizing: border-box;
+    background-color: black;
+}
+.h1{
+    font-weight: normal;
+    font-size: 4rem;
+    
+    color:#9537FF;
+}
+.countdown_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.big_text{
+    font-weight: bold;
+    font-size: 6rem;
+    color:#D5FC34;
+    line-height: 1;
+    margin:0rem 2rem;
+}
+.countdown_ele{
+    text-align: center;
+}
+.countdown_ele span{
+    font-size:1.3rem;
+}
+.labels{
+color:#9537FF;
+}
