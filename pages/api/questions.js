@@ -1,56 +1,85 @@
-import { unstable_getServerSession } from "next-auth";
-import { connectToDatabase } from "../../utils/database";
-import { getToken } from "next-auth/jwt";
+import errorCodes from '../../utils/errorCodes';
+import User from '../../models/User';
+import Team from '../../models/Team';
+import Question from '../../models/Question';
+import connectToDatabase from '../../utils/database';
 
-export default questions = async (req, res) => {
-  if (req.method === "GET") {
-    return;
-  }
-  const token = await getToken({ req });
-  if (token) {
-    const session = await unstable_getServerSession(req, res);
-    const curTime = new Date();
-    const email = req.body.email;
-    // const startTime = new Date()
-    const client = await connnectToDatabase();
-    const db = client.db();
-    const user = await db.collections("users").findOne({ email });
-    const teamId = user.teamId;
-    if (!teamId) {
-      return res.status(422).json({ message: "not in team" });
-    }
-    const team = await db.collections("teams").findOne({ teamId });
-    const currentQuestion = team.solveCount + 1;
-    const totalQuestions = process.env.TOTAL_QUESTIONS;
-    if (currentQuestion > totalQuestions) {
-      return res.status();
-    }
-    const ques = await db
-      .collections("questions")
-      .findOne({ questionNo: curQues });
+async function handler(req, res) {
+  if (req.method == 'GET') {
+    try {
+      await connectToDatabase();
+      let currentTime = new Date();
+      let startTime = new Date(process.env.startTime);
+      let endTime = new Date(process.env.endTime);
+      if(Date.parse(currentTime)<Date.parse(startTime) || Date.parse(currentTime)>Date.parse(endTime)){
+        return res.status(errorCodes.BAD_REQUEST).json({message:'contest is from '+ process.env.START_TIME+'to '+process.env.END_TIME});
+      }
+      const { email } = req.body;
+      let user = await User.findOne({ email });
 
-    // const ques = await Question.findOne({ questionNo: curQues });
+      const teamId = user.teamId;
 
-    const submittedAns = req.body.teamAns;
-    if (submittedAns !== ques.questionAns) {
+      if (!teamId) {
+        return res.status(errorCodes.SUCCESS_NOT_IN_TEAM).json({ message: "please join team" });
+      }
+
+      let team = await Team.findOne({ teamId });
+      const curQues = team.solveCount + 1;
+      if (curQues > process.env.TOTAL_QUESTIONS) {
+        return res.status(errorCodes.SUCCESS_ALL_DONE).json({ message: "All questions done!" });
+      }
+      const question = await Question.findOne({ questionNo: curQues });
+      if (!question) {
+        return res.status(errorCodes.NOT_FOUND).json({ message: "ques not found" });
+      }
+      const { questionNo, questionURL } = question;
+      return res.json({ questionNo, questionURL });
+    } catch (err) {
       return res
-        .status(errCode.SUCCESS_WRONG_ANS)
-        .json({ message: "Wrong ans" });
+        .status(errorCodes.BAD_REQUEST)
+        .json({ message: "something went wrong" });
     }
-
-    const TimeNow = new Date();
-    await db
-      .collections("teams")
-      .findByIdAndUpdate(
+  }
+  else if (req.method === 'POST') {
+    const { email } = req.userData;
+    try {
+      let currentTime = new Date();
+      let startTime = new Date(process.env.startTime);
+      let endTime = new Date(process.env.endTime);
+      if(Date.parse(currentTime)<Date.parse(startTime) || Date.parse(currentTime)>Date.parse(endTime)){
+        return res.status(errorCodes.BAD_REQUEST).json({message:'contest is from '+ process.env.START_TIME+'to '+process.env.END_TIME});
+      }
+      let user = await User.findOne({ email });
+      const teamId = user.teamId;
+      if (!teamId) {
+        return res.status(errorCodes.SUCCESS_NOT_IN_TEAM).json({ message: "please join team" });
+      }
+      let team = await Team.findOne({ teamId });
+      const curQues = team.solveCount + 1;
+      const totalQuestions = (await Question.find({})).length;
+      if (curQues > totalQuestions) {
+        return res.status(errorCodes.SUCCESS_ALL_DONE).json({ message: "All questions done!" });
+      }
+      const ques = await Question.findOne({ questionNo: curQues });
+      const submittedAns = req.body.teamAns;
+      if (submittedAns !== ques.questionAns) {
+        return res.status(errorCodes.SUCCESS_WRONG_ANS).json({ message: "Wrong answer" });
+      }
+      const TimeNow = new Date();
+      await Team.findByIdAndUpdate(
         team._id,
         { solveCount: curQues, latestTime: TimeNow },
         { new: true }
       );
 
-    return res
-      .status(errCode.SUCCESS_CORRECT_ANS)
-      .json({ message: "Correct Ans" });
-  } else {
-    res.status(422).json({ message: "Login again" });
+      return res.status(errorCodes.SUCCESS_CORRECT_ANS).json({ message: "Correct Answer" });
+    } catch (err) {
+      // console.log(err);
+      return res
+        .status(errorCodes.BAD_REQUEST)
+        .json({ message: "something went wrong" });
+    }
   }
-};
+}
+
+export default handler;

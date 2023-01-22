@@ -1,9 +1,14 @@
-import { MongoClient } from 'mongodb';
+import mongoose from 'mongoose';
 
-export async function connectToDatabase() {
-    const mongoUri=process.env.MONGO_URI;
-  const client = await MongoClient.connect(
-    mongoUri
-  );
-  return client;
+const connectToDatabase = async()=>{
+  mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("connect to database");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 }
+
+export default connectToDatabase;
