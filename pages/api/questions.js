@@ -25,7 +25,8 @@ async function handler(req, res) {
 
       let team = await Team.findOne({ teamId });
       const curQues = team.solveCount + 1;
-      if (curQues > process.env.TOTAL_QUESTIONS) {
+      const totalQuestions = (await Question.find({})).length;
+      if (curQues > totalQuestions) {
         return res.status(errorCodes.SUCCESS_ALL_DONE).json({ message: "All questions done!" });
       }
       const question = await Question.findOne({ questionNo: curQues });
@@ -43,6 +44,7 @@ async function handler(req, res) {
   else if (req.method === 'POST') {
     const { email } = req.userData;
     try {
+      await connectToDatabase();
       let currentTime = new Date();
       let startTime = new Date(process.env.startTime);
       let endTime = new Date(process.env.endTime);
