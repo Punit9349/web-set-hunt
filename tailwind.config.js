@@ -7,10 +7,13 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'back': "url('/background.jpg')",
+        'back': "url('/background.png')",
       },
       height: {
         '9/10': '90%',
+      },
+      colors:{
+        'neon' : "#D5FC34"
       }
     }
   },
