@@ -46,3 +46,198 @@
 .labels{
 color:#9537FF;
 }
+
+.signUpForm{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    /* background-color: blue; */
+    align-items: center;
+    color: white;
+    padding:5px;
+}
+
+.signUpForm input{
+    width: 350px;
+    height: 60px;
+    padding:5px 10px;
+    border:none;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #9537FF;
+}
+
+.signUpForm input[type='submit']{
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.signUpForm input:focus{
+    outline: none;
+}
+
+.signUpForm label{
+    align-self: flex-start;
+    font-weight: 650;
+    font-size: 18px;
+}
+
+.signUpFormContainer{
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.signUpFormContainer h1{
+    font-size: 32px;
+    font-weight: 900;
+    color: #D5FC34;
+    margin-top: 0px;
+}
+
+.signUpFormMicroLogo{
+    background-image: url('../public/microbus.jpeg');
+    width: 90px;
+    height:90px;
+    margin-bottom: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+.signUpPage{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-image: url('../public/background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    filter: brightness(80%);
+}
+
+.signUpSocialMedia,.signUpSocialComponent{
+    display: flex;
+}
+
+.signUpSocialComponent{
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.signUpSocialMedia{
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    font-weight: 600;
+    font-size: 22px;
+    position: absolute;
+    left:20px;
+    bottom:20px;
+    /* background-color: #9537FF; */
+}
+
+.signUpSocialComponent h2{
+    padding:0px 15px
+}
+
+.signUpSocialIcon{
+    width: 32px;
+    height: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.signUpSocialFb{
+    background-image: url('../public/facebook.png');
+}
+
+.signUpSocialInsta{
+    background-image: url('../public/insta.png');
+}
+
+
+/* Gaming arena */
+
+.gamingArena{
+    width: 100vw;
+    height:100vh;
+    background-image: url('../public/background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gAquestionsComponent{
+    width: 70vw;
+    height: 70vh;
+    background-color: #9537FF;
+    opacity: 0.8;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transform: translate(0,10%);
+}
+
+.gAquestionsContainer{
+    width: 55%;
+    height: 90%;
+    background-color: aliceblue;
+    margin-left: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.gAAnswersContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: auto;
+}
+
+.gAAnswersContainer label{
+    font-weight: 650;
+    font-size: 20px;
+    color:white;
+}
+
+.gAAnswersContainer input{
+    padding:10px;
+    width: 300px;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #2e035f;
+    font-weight: 550;
+}
+
+.gAAnswersContainer input:focus{
+    outline: none;
+}
+
+.gAAnswersContainer input::placeholder{
+    color:beige
+}
+
+.gamingArenaMicrobusLogo{
+    background-image: url('../public/microbus.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 90px;
+    height: 90px;
+    transform: translate(0,30%);
+}
