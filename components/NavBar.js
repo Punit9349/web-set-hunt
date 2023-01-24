@@ -1,6 +1,6 @@
 import React from 'react';
 import { MdOutlineLogout } from 'react-icons/md';
-import { NavbarData } from './NavBarData';
+import { NavbarData } from '../utils/NavBarData';
 import Link from 'next/link';
 import styles from '../styles/Home4.module.css';
 
