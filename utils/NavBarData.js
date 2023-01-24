@@ -8,26 +8,26 @@ import { FaFire } from 'react-icons/fa';
 export const NavbarData = [
 	{
 		title: 'Dashboard',
-		path: '/lobby/dashboard',
+		value: 0,
 		icon: <FaFire size='40' />,
 		cName: 'whMenuItem',
 	},
 	{},
 	{
 		title: 'Profile',
-		path: '/lobby/profile',
+		value: 1,
 		icon: <CgProfile size='40' />,
 		cName: 'whMenuItem',
 	},
 	{
 		title: 'Leaderboard',
-		path: '/lobby/leaderboard',
+		value: 2,
 		icon: <MdOutlineLeaderboard size='40' />,
 		cName: 'whMenuItem',
 	},
 	{
 		title: 'Team',
-		path: '/lobby/teams',
+		value: 3,
 		icon: <RiTeamLine size='40' />,
 		cName: 'whMenuItem',
 	},

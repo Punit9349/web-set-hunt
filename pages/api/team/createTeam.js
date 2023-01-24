@@ -50,8 +50,6 @@ const createTeam = async (req, res) => {
         team:newTeam,
       });
   } catch (err) {
-    console.log("error in creating the team");
-    console.log(err);
     return res
       .status(errorCodes.INTERNAL_ERROR)
       .json({ message: "erron in creating the team! try again later" });

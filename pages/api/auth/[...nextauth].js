@@ -2,7 +2,9 @@ import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import { verifyPassword } from '../../../utils/auth';
-import { connectToDatabase } from '../../../utils/database';
+import connectToDatabase from '../../../utils/database';
+import User from '../../../models/User';
+import errorCodes from '../../../utils/errorCodes';
 
 export default NextAuth({
   session: {
@@ -12,17 +14,12 @@ export default NextAuth({
     CredentialsProvider({
         name:'credentials',
       async authorize(credentials) {
-        const client = await connectToDatabase();
-
-        const usersCollection = client.db().collection('users');
-
-        const user = await usersCollection.findOne({
+        await connectToDatabase();
+        const user = await User.findOne({
           email: credentials.email,
         });
-
-        // console.log(user);
         if (!user) {
-          throw new Error('No user found!');
+          return res.status(errorCodes.NOT_FOUND).json({message:'the email is not registered'});
         }
 
         const isValid = await verifyPassword(
@@ -31,11 +28,10 @@ export default NextAuth({
         );
 
         if (!isValid) {
-            console.log('wrong email or password');
-          throw new Error('Could not log you in!');
+            return res.status(errorCodes.NOT_FOUND).json({message:'wrong email or password'});
         }
-
-        return { email: user.email };
+        return res.status(errorCodes.NOT_FOUND).json({...user});
+        
       },
     }),
     GoogleProvider({

@@ -1,40 +1,51 @@
+import User from "../../../models/User";
 import { hashPassword } from "../../../utils/auth";
-import { connectToDatabase } from "../../../utils/database";
+import connectToDatabase from "../../../utils/database";
+import errorCodes from '../../../utils/errorCodes';
 
-async function handler(req,res){
-    if(req.method!=='POST'){
-        return;
-    }
-    const data=req.body;
-    const {email,password}=data;
+async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return;
+  }
+  try{
+    const data = req.body;
+    const { email, password } = data;
+    let p = String(password);
+    let e = String(email);
     if (
-        !email ||
-        !email.includes('@') ||
-        !password ||
-        password.trim().length < 7
-      ) {
-        res.status(422).json({
-          message:
-            'Invalid input - password should also be at least 7 characters long.',
-        });
-        return;
-      }
-    
-      const client = await connectToDatabase();
-      const db = client.db();
-      const existingUser = await db.collection('users').findOne({ email: email });
-    
-      if (existingUser) {
-        res.status(422).json({ message: 'User exists already!' });
-        return;
-      }
-    
-      const hashedPassword = await hashPassword(password);
-      const result = await db.collection('users').insertOne({
-        email: email,
-        password: hashedPassword,
+      !e ||
+      !e.includes('@') ||
+      !p ||
+      p.trim().length < 7
+    ) {
+      res.status(errorCodes.BAD_REQUEST).json({
+        message:
+          'Invalid input - password should also be at least 7 characters long.'
       });
-      res.status(201).json({ message: 'Created user!' });
+      return;
+    }
+  
+    await connectToDatabase();
+    const existingUser = await User.findOne({ email: e });
+  
+    if (existingUser) {
+      res.status(errorCodes.BAD_REQUEST).json({ message: 'User exists already!' });
+      return;
+    }
+  
+    const hashedPassword = await hashPassword(p);
+    let user = new User({
+      email: e,
+      password: hashedPassword,
+    });
+    await user.save();
+    user = user.toObject();
+    delete user.password;
+    res.status(201).json({ message: 'Created user!',user });
+  }
+  catch(error){
+    return res.status(errorCodes.INTERNAL_ERROR).json({message:'error in signing up user'});
+  }
 }
 
 export default handler;

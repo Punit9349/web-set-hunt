@@ -332,7 +332,7 @@ color:#9537FF;
 .profileDetails{
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    gap:40px 20px;
+    gap:40px 100px;
 }
 
 .profileDetail{

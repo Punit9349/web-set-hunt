@@ -3,9 +3,15 @@ import { MdOutlineLogout } from 'react-icons/md';
 import { NavbarData } from '../utils/NavBarData';
 import Link from 'next/link';
 import styles from '../styles/Home4.module.css';
+import { useDispatch } from 'react-redux';
+import { UPDATE_LOBBY } from '../reducers/lobbyReducer';
 
 function NavBar() {
-    // const dispatch=useDispatch();
+    const dispatch=useDispatch();
+
+	function handleLobby(value){
+		dispatch(UPDATE_LOBBY(value));
+	}
 
 	const handleLogout = () => {
 		// const auth=getAuth();
@@ -41,8 +47,9 @@ function NavBar() {
 							<div
 								key={index}
 								className={styles.whMenuItem}
+								onClick={()=>handleLobby(item.value)}
 								>
-								<Link href={item.path} >{item.icon}</Link>
+								{item.icon}
 								<span className={styles.whMenuItemSpan}>
 									{item.title}
 								</span>
