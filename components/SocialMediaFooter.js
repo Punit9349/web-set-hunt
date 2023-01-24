@@ -14,7 +14,7 @@ function SocialMediaFooter() {
             </div>
             <h2>microbus_nitkkr</h2>
           </div>
-          </div>
+      </div>
   )
 }
 

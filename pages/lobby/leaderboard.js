@@ -6,7 +6,7 @@ import Leader from "../../components/leader";
 import Questions from "../../components/questions";
 import Profile from "../../components/profile";
 
-const Gamingarena = () => {
+const Leaderboard = () => {
   return (
     <>
         <div className={styles.gamingArena}>
@@ -16,9 +16,9 @@ const Gamingarena = () => {
             <div>
             <NavBar />
             </div>
-            <div className="mt-12">
-            <Profile/>
-            {/* <Leader/> */}
+            <div className="">
+
+            <Leader/>
             </div>
           </div>
           <div>
@@ -29,4 +29,4 @@ const Gamingarena = () => {
   );
 };
 
-export default Gamingarena;
+export default Leaderboard;
