@@ -241,3 +241,70 @@ color:#9537FF;
     height: 90px;
     transform: translate(0,30%);
 }
+
+/* Navigation bar */
+.whNavBar {
+    position: absolute;
+    z-index: 10;
+    left:20px;
+    top:20%;
+	height:fit-content;
+    min-height: 500px;
+    background-color: #9537FF;
+    width: 90px;
+	border-radius: 1rem;
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	padding: 3vh;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.whLogo {
+	width:50px;
+    height: 50px;
+    background-image: url('../public/microbus.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+}
+
+.whMenuItem {
+	display: flex;
+    align-items: center;
+}
+
+.whMenuItem span{
+    font-weight: 650;
+    font-size: 20px;
+}
+
+.whMenuItem:hover {
+	color: white;
+	border-radius: 0.7rem;
+}
+
+.whMenuItemSpan {
+	position: absolute;
+	color: white;
+	/* font-size: 0.9rem; */
+	font-size: 2vh;
+	/* left: 100px; */
+	left: 13vh;
+	background-color: var(--clr-gray-900);
+	padding: 1vh;
+	border-radius: 0.3rem;
+	visibility: hidden;
+	transition: all 0.1s linear;
+}
+
+.whMenuItem:hover .whMenuItemSpan {
+	visibility: visible;
+}
+
+.whDivider {
+	width: 70%;
+	border-color: var(--clr-gray-800);
+	border-style: solid;
+}

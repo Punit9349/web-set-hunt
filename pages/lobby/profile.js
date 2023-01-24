@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "../styles/Home2.module.css";
+import styles from "../../styles/Home2.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import SocialMediaFooter from "../components/SocialMediaFooter";
+import SocialMediaFooter from "../../components/SocialMediaFooter";
 
 const Teammember = () => {
   const img = "/background.svg";
