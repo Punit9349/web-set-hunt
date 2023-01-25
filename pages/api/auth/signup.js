@@ -37,6 +37,7 @@ async function handler(req, res) {
     let user = new User({
       email: e,
       password: hashedPassword,
+      loginWithGoogle: false
     });
     await user.save();
     user = user.toObject();

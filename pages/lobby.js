@@ -19,9 +19,13 @@ const Lobby = () => {
   const { data: session, status } = useSession();
 
   useEffect(() => {
+    console.log(session);
     if (status === "unauthenticated") {
       dispatch(UPDATE_USER(session?.user));
       router.push('/login');
+    }
+    else if(status==='authenticated'){
+      dispatch(UPDATE_USER(session?.user));
     }
   }, [session, status]);
 

@@ -5,18 +5,15 @@ import styles from '../styles/Home4.module.css';
 import { useDispatch } from 'react-redux';
 import { UPDATE_LOBBY } from '../reducers/lobbyReducer';
 import { signOut, useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
 import { UPDATE_USER } from '../reducers/userReducer';
 
 function NavBar() {
     const dispatch=useDispatch();
-	const router = useRouter();
 	const {data:session,status}=useSession();
 
 	useEffect(()=>{
        if(status==='unauthenticated'){
 		 dispatch(UPDATE_USER(session?.user));
-		 router.push('/login');
 	   }
 	},[status,session]);
 
@@ -25,9 +22,8 @@ function NavBar() {
 	}
 
 	const handleLogout = () => {
-		signOut();
-		dispatch(UPDATE_USER(null));
-		router.push('/login');
+		signOut({callbackUrl:'/login'});
+		dispatch({type:'SIGN_OUT'});
 	};
 
 	return (

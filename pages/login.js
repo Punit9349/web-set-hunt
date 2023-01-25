@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react'
-import {signIn,useSession,signOut} from 'next-auth/react';;
+import {signIn,useSession} from 'next-auth/react';;
 import bg_login from '../public/bg_login.png';
 import micro from '../public/microbus.jpeg';
 import google from '../public/google.svg';
 import SocialMediaFooter from '../components/SocialMediaFooter';
 import { useRouter } from 'next/router';
 import { toast, ToastContainer } from 'react-toastify';
-import customToast from '../utils/toast';
+import customToast, { toastCodes } from '../utils/toast';
 import { useDispatch } from 'react-redux';
 import { UPDATE_USER } from '../reducers/userReducer';
 
@@ -33,15 +33,17 @@ const Login = () => {
     const result = await signIn('credentials',{
       redirect:false,
       email:emailRef.current.value,
-      password:passwordRef.current.value
-    });
-    console.log(result);
-    if(result.ok){
-      router.push('/lobby');
+      password:passwordRef.current.value,
+      callbackUrl:'/lobby'
+    },);
+    if(!result.ok){
+      customToast('login failed',toastCodes.FAILURE);
     }
-    else{
-      customToast('login failed','failure');
-    }
+  }
+
+  async function handleSignInGoogle(){
+    const response = await signIn('google',{callbackUrl:'/lobby'});
+    console.log(response);
   }
 
   return (
@@ -66,7 +68,7 @@ const Login = () => {
             <img className='w-16' src={micro.src} alt="micro" />
           </div>
           <h1 className='text-xl lg:text-3xl font-semibold text-center text-neon mb-3 lg:mb-4'>Log in</h1>
-          <div className='flex justify-center items-center mb-3'>
+          <div className='flex justify-center items-center mb-3 cursor-pointer' onClick={handleSignInGoogle}>
             <img className='w-10 rounded-md' src={google.src} alt="google" />
           </div>
           <p className='text-center text-white text-lg mb-3'>or</p>
