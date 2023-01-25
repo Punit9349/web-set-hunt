@@ -1,5 +1,7 @@
-import React, { useRef } from 'react';
-import { useDispatch} from 'react-redux';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import SocialMediaFooter from '../components/SocialMediaFooter';
 import { UPDATE_USER } from '../reducers/userReducer';
@@ -12,6 +14,20 @@ const SignUp = () => {
   const passwordRef = useRef();
   const rePasswordRef = useRef();
   const dispatch = useDispatch();
+  const router = useRouter();
+  const { data: session, status } = useSession();
+
+  useEffect(()=>{
+    if(status!=="loading"){
+      dispatch(UPDATE_USER(session?.user));
+      if(status==="unauthenticated"){
+        router.push('/login');
+      }
+      else{
+        router.push('/lobby');
+      }
+    }
+  },[session,status]);
 
   async function signUpHandler(event) {
     event.preventDefault();
@@ -29,11 +45,13 @@ const SignUp = () => {
       password: [passwordRef.current.value]
     };
     const result = await networkRequest('POST', url, data);
+    // console.log(result);
     if (Math.floor(Number(result.status) / 100) === 2) {
-      dispatch(UPDATE_USER(result.data.user));
+       router.push('/lobby');
+       dispatch(UPDATE_USER(result?.data?.user));
     }
     else {
-      toast(result.data.message, 'failure');
+      toast(result?.data?.message, 'failure');
     }
   }
 

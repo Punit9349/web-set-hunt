@@ -1,4 +1,5 @@
 import { hash, compare } from 'bcryptjs';
+import { unstable_getServerSession } from 'next-auth';
 
 export async function hashPassword(password) {
   const hashedPassword = await hash(password, 12);
@@ -8,4 +9,12 @@ export async function hashPassword(password) {
 export async function verifyPassword(password, hashedPassword) {
   const isValid = await compare(password, hashedPassword);
   return isValid;
+}
+
+export async function verifySession(req,res,authOptions){
+  const session = await unstable_getServerSession(req, res, authOptions);
+  if (!session) {
+    return false;
+  }
+  return true;
 }

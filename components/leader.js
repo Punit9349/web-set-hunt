@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { CgProfile } from 'react-icons/cg';
+import networkRequest from '../utils/request';
 
 const Leader = () => {
+
+  useEffect(()=>{
+    async function fetchLeaderBoard(){
+      const url = process.env.NEXTAUTH_URL+'/api/leaderBoard';
+      const response = await networkRequest('GET',url,{});
+      console.log(response);
+    }
+    fetchLeaderBoard();
+  },[]);
   return (
     <div className='flex flex-col mx-12'>
         <div className='text-[#D5FC34] text-3xl font-semibold my-2'>Leaderboard</div>

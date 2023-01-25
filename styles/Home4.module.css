@@ -168,7 +168,7 @@ color:#9537FF;
 /* Gaming arena */
 
 .gamingArena{
-    width: 100%;
+    width: 100vw;
     height:100vh;
     background-image: url('../public/background.svg');
     background-repeat: no-repeat;
@@ -177,7 +177,7 @@ color:#9537FF;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    justify-content: center;
 }
 
 .gAquestionsComponent{
@@ -189,7 +189,6 @@ color:#9537FF;
     display: flex;
     align-items: center;
     overflow: hidden;
-    transform: translate(0,10%);
 }
 
 .gAquestionsContainer{
@@ -240,7 +239,9 @@ color:#9537FF;
     background-size: cover;
     width: 90px;
     height: 90px;
-    transform: translate(0,30%);
+    position: absolute;
+    top:28px;
+    left:47%;
 }
 
 /* Navigation bar */
@@ -250,12 +251,11 @@ color:#9537FF;
     left:20px;
     top:18%;
 	height:fit-content;
-    /* min-height: 500px; */
     min-height: 70%;
     max-height: 80%;
     background-color: #9537FF;
-    width: 8%;
-	border-radius: 1rem;
+    width: 100px;
+	border-radius: 16px;
 	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 	padding: 3vh;
 	display: flex;
@@ -314,17 +314,17 @@ color:#9537FF;
 /* profile container */
 
 .profileContainer{
-   width: 100%;
-   /* margin-top: 50px; */
-   height: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+   width: fit-content;
+   height: fit-content;
+}
+
+.profilePicture{
+    padding-top: 40px;
 }
 
 .profileSection{
-    width: auto;
-    height: 340px;
+    width: fit-content;
+    height: fit-content;
     background-color: #9537FF;
     border-radius: 16px;
     display: flex;
@@ -337,6 +337,7 @@ color:#9537FF;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap:40px 100px;
+    padding:40px
 }
 
 .profileDetail{
