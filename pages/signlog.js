@@ -1,44 +1,69 @@
-import React from 'react'
-import myGif from './../public/circle1.gif'
-import myGif1 from './../public/traingle1.gif'
-import Image from 'next/image';
-
+import React from "react";
+import bg_signlog from "../public/bg_signlog.gif";
 const Signlog = () => {
-    const img = "/background.svg";
-    const img1 = "/1.svg";
+  const img = "/background.svg";
+  const img1 = "/1.svg";
   return (
     <>
-     <style jsx>
-          {`
-              .part1{
-                background-image: url(${img});
-                background-size: cover;
-                background-height:100%;
-        
-              }
-              .part{
-                background-image: url(${img1});
-                // background-size: cover;
-                background-height:20%;
-        
-              }
-              `}
-        </style>
-    <div className='part1 h-screen bg-black'>
-         <div className='flex items-center justify-center pt-6'><picture><img className='w-16 h-16' src="/microbus.jpeg" alt="" /></picture></div>
-         <div className='flex flex-row justify-center'>
-          <div className='flex justify-center items-center'><Image className='' src={myGif} alt="my gif" height={130} width={130}/></div>
-         <div>
-          <div className='flex justify-center items-center pt-1'><Image src={myGif1} alt="my gif" height={145} width={145} /></div>
-         </div>
-         </div>
+      {/* <div className="part1 h-screen bg-black relative overflow-hidden">
+        <div className="flex items-center justify-center pt-6">
+          <picture>
+            <img className="w-16 h-16" src="/microbus.jpeg" alt="" />
+          </picture>
+        </div>
+        <div className="flex flex-row justify-center">
+          <div className=" ">
+            <Image className="" src={myGif} alt="my gif" />
+            <div className="text-white mt-0 font-semibold text-lg -lg:mt-1 text-center">
+              Signup
+            </div>
+          </div>
+          <div>
+            <div className="">
+              <Image src={myGif1} alt="my gif" />
+              <div className="text-white mt-0 font-semibold text-lg -lg:mt-1 text-center">
+                Login
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <div className="flex justify-center items-center gap-4 text-lg font-semibold ml-4 text-white absolute w-full bottom-10  lg:bottom-16 ">
+          <button className="px-6 py-1 rounded-full bg-purpleP hover:bg-purpleS transition-all duration-100">
+            Return
+          </button>
+          <button className="px-6 py-1 rounded-full bg-purpleP hover:bg-purpleS transition-all duration-100">
+            SOS
+          </button>
+        </div>
 
-         <div className=''>hola</div>
-         <div></div>
-    </div>
+        <div className="w-64 absolute left-5 lg:left-12">
+          <Image className="object-contain" src={title} alt="title" />
+        </div>
+
+        <div className="">hola</div>
+        <div></div>
+      </div> */}
+
+      <div className="">
+        <div
+          className="h-screen"
+          style={{
+            background: `url(${bg_signlog.src})`,
+          }}
+        >
+          <div className="flex justify-center items-center gap-4 text-lg font-semibold ml-4 text-white absolute w-full bottom-10  lg:bottom-16 ">
+            <button className="px-6 py-1 rounded-full bg-purpleP hover:bg-purpleS transition-all duration-100">
+              Return
+            </button>
+            <button className="px-6 py-1 rounded-full bg-purpleP hover:bg-purpleS transition-all duration-100">
+              SOS
+            </button>
+          </div>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Signlog
+export default Signlog;

@@ -31,14 +31,14 @@ const Gamingarena = () => {
               </picture>
             </a>
           </div>
-          <div className="text-3xl pt-14 text-[#D5FC34] font-bold mx-28 pr-10">
+          <div className="text-3xl pt-14 text-[#D5FC34] font-bold mx-28 pr-10 mt-4">
             Gaming Arena
           </div>
         </div>
 
         <div className="bg-[#9537FF] mx-24 rounded-3xl flex opacity-70 h-3/4">
           <div className="w-1/2">
-            <div className="flex justify-center items-center text-white text-lg font-bold">
+            <div className="flex justify-center items-center text-white text-lg font-bold py-2">
               Hint
             </div>
             <div className="h-9/10 bg-white rounded-3xl mx-6 mb-2 opacity-95"></div>
