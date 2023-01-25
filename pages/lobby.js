@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
 import Questions from "../components/questions";
 import Profile from "../components/profile";
 import { useSelector } from "react-redux";
+import Leader from '../components/leader';
 
 const Lobby = () => {
   const lobbyValue = useSelector((state)=>{
@@ -18,7 +19,8 @@ const Lobby = () => {
 
           </div>
           {lobbyValue===0?<Questions />:
-          lobbyValue===1?<Profile />:<></>}
+          lobbyValue===1?<Profile />:
+          lobbyValue===2?<Leader />:<></>}
            
         </div>
         <SocialMediaFooter />
