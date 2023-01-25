@@ -46,3 +46,324 @@
 .labels{
 color:#9537FF;
 }
+
+.signUpForm{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    /* background-color: blue; */
+    align-items: center;
+    color: white;
+    padding:5px;
+}
+
+.signUpForm input{
+    width: 350px;
+    height: 60px;
+    padding:5px 10px;
+    border:none;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #9537FF;
+}
+
+.signUpForm input[type='submit']{
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.signUpForm input:focus{
+    outline: none;
+}
+
+.signUpForm label{
+    align-self: flex-start;
+    font-weight: 650;
+    font-size: 18px;
+}
+
+.signUpFormContainer{
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.signUpFormContainer h1{
+    font-size: 32px;
+    font-weight: 900;
+    color: #D5FC34;
+    margin-top: 0px;
+}
+
+.signUpFormMicroLogo{
+    background-image: url('../public/microbus.jpeg');
+    width: 90px;
+    height:90px;
+    margin-bottom: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+.signUpPage{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-image: url('../public/background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    filter: brightness(80%);
+}
+
+.signUpSocialMedia,.signUpSocialComponent{
+    display: flex;
+}
+
+.signUpSocialComponent{
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.signUpSocialMedia{
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    font-weight: 600;
+    font-size: 22px;
+    position: absolute;
+    left:20px;
+    bottom:20px;
+    /* background-color: #9537FF; */
+}
+
+.signUpSocialComponent h2{
+    padding:0px 15px
+}
+
+.signUpSocialIcon{
+    width: 32px;
+    height: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.signUpSocialFb{
+    background-image: url('../public/facebook.png');
+}
+
+.signUpSocialInsta{
+    background-image: url('../public/insta.png');
+}
+
+
+/* Gaming arena */
+
+.gamingArena{
+    width: 100%;
+    height:100vh;
+    background-image: url('../public/background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.gAquestionsComponent{
+    width: 70vw;
+    height: 70vh;
+    background-color: #9537FF;
+    opacity: 0.8;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transform: translate(0,10%);
+}
+
+.gAquestionsContainer{
+    width: 55%;
+    height: 90%;
+    background-color: aliceblue;
+    margin-left: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.gAAnswersContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: auto;
+}
+
+.gAAnswersContainer label{
+    font-weight: 650;
+    font-size: 20px;
+    color:white;
+}
+
+.gAAnswersContainer input{
+    padding:10px;
+    width: 300px;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #2e035f;
+    font-weight: 550;
+}
+
+.gAAnswersContainer input:focus{
+    outline: none;
+}
+
+.gAAnswersContainer input::placeholder{
+    color:beige
+}
+
+.gamingArenaMicrobusLogo{
+    background-image: url('../public/microbus.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 90px;
+    height: 90px;
+    transform: translate(0,30%);
+}
+
+/* Navigation bar */
+.whNavBar {
+    position: absolute;
+    z-index: 10;
+    left:20px;
+    top:18%;
+	height:fit-content;
+    /* min-height: 500px; */
+    min-height: 70%;
+    max-height: 80%;
+    background-color: #9537FF;
+    width: 8%;
+	border-radius: 1rem;
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	padding: 3vh;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.whLogo {
+	width:50px;
+    height: 50px;
+    background-image: url('../public/microbus.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.6;
+}
+
+.whMenuItem {
+	display: flex;
+    align-items: center;
+    cursor:pointer
+}
+
+.whMenuItem span{
+    font-weight: 650;
+    font-size: 20px;
+}
+
+.whMenuItem:hover {
+	color: white;
+	border-radius: 0.7rem;
+}
+
+.whMenuItemSpan {
+	position: absolute;
+	color: white;
+	font-size: 2vh;
+	left: 13vh;
+	background-color: var(--clr-gray-900);
+	padding: 1vh;
+	border-radius: 0.3rem;
+	visibility: hidden;
+	transition: all 0.1s linear;
+}
+
+.whMenuItem:hover .whMenuItemSpan {
+	visibility: visible;
+}
+
+.whDivider {
+	width: 70%;
+	border-color: var(--clr-gray-800);
+	border-style: solid;
+}
+
+/* profile container */
+
+.profileContainer{
+   width: 100%;
+   /* margin-top: 50px; */
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.profileSection{
+    width: auto;
+    height: 340px;
+    background-color: #9537FF;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.profileDetails{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:40px 100px;
+}
+
+.profileDetail{
+    display: flex;
+    flex-direction: column;
+}
+
+.profileDetail input{
+    width: 300px;
+    height: 50px;
+    border-radius: 8px;
+    padding:5px 15px;
+    color:white;
+    background-color: #2e035f;
+    border:none;
+}
+
+.profileDetail input:focus{
+    outline: none;
+}
+
+.profileDetail label{
+    font-weight: 650;
+    font-size: 20px;
+    color:white
+}
+
+
+
+
