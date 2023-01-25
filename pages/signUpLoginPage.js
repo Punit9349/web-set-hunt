@@ -49,10 +49,14 @@ const Signlog = () => {
         <div
           className="h-screen"
           style={{
+            width: "100%",
             background: `url(${bg_signlog.src})`,
+            backgroundSize: "100% 100%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         >
-          <div className="flex justify-center items-center gap-4 text-lg font-semibold ml-4 text-white absolute w-full bottom-10  lg:bottom-16 ">
+          <div className="flex justify-center items-center gap-4 text-lg font-semibold m-auto text-white absolute w-full bottom-10  lg:bottom-16 ">
             <button className="px-6 py-1 rounded-full bg-purpleP hover:bg-purpleS transition-all duration-100">
               Return
             </button>
