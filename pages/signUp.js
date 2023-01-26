@@ -1,13 +1,13 @@
-import { signIn, useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import React, { useEffect, useRef } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import Layout from '../components/layout';
-import SocialMediaFooter from '../components/SocialMediaFooter';
-import styles from '../styles/Home4.module.css';
-import networkRequest from '../utils/request';
-import customToast from '../utils/toast';
-import google from '../public/google.svg';
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import React, { useEffect, useRef } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import Layout from "../components/layout";
+import SocialMediaFooter from "../components/SocialMediaFooter";
+import styles from "../styles/Home4.module.css";
+import networkRequest from "../utils/request";
+import customToast from "../utils/toast";
+import google from "../public/google.svg";
 
 const SignUp = () => {
   const emailRef = useRef();
@@ -16,75 +16,93 @@ const SignUp = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  // useEffect(()=>{
-  //   if(status!=="loading"){
-  //     if(status==="authenticated"){
-  //       router.push('/lobby');
-  //     }
-  //   }
-  // },[session,status]);
+  useEffect(() => {
+    if (status !== "loading") {
+      if (status === "authenticated") {
+        router.push("/lobby");
+      }
+    }
+  }, [session, status]);
 
   async function signUpHandler(event) {
     event.preventDefault();
     if (!emailRef || !passwordRef || !rePasswordRef) {
-      customToast('Fill all the input fields', 'warning');
+      customToast("Fill all the input fields", "warning");
       return;
     }
     if (passwordRef.current.value !== rePasswordRef.current.value) {
-      customToast("The entered passwords don't match", 'warning');
+      customToast("The entered passwords don't match", "warning");
       return;
     }
-    const url = process.env.NEXTAUTH_URL + '/api/auth/signup';
+    const url = process.env.NEXTAUTH_URL + "/api/auth/signup";
     const data = {
       email: emailRef.current.value,
-      password: passwordRef.current.value
+      password: passwordRef.current.value,
     };
-    const result = await networkRequest('POST', url, data);
+    const result = await networkRequest("POST", url, data);
     console.log(result);
     if (Math.floor(Number(result.status) / 100) === 2) {
-      customToast('account created, login','success');
-      router.push('/login');
-    }
-    else {
-      toast(result?.data?.message, 'failure');
+      customToast("account created, login", "success");
+      router.push("/login");
+    } else {
+      toast(result?.data?.message, "failure");
     }
   }
 
-  async function handleSignInGoogle(){
-    const response = await signIn('google',{callbackUrl:'/lobby'});
+  async function handleSignInGoogle() {
+    const response = await signIn("google", { callbackUrl: "/lobby" });
     console.log(response);
   }
 
   return (
     <>
-    <Layout>
-
-      <ToastContainer />
-      <div className={styles.signUpPage}>
-        <div className={styles.signUpFormContainer}>
-          <div className={styles.signUpFormMicroLogo}>
-
+      <Layout>
+        <ToastContainer />
+        <div className={styles.signUpPage}>
+          <div className={styles.signUpFormContainer}>
+            <div className={styles.signUpFormMicroLogo}></div>
+            <div className={styles.signUpForm}>
+              <h1>Create Account</h1>
+              <div
+                className="flex justify-center items-center mb-3 cursor-pointer"
+                onClick={handleSignInGoogle}
+              >
+                <img
+                  className="w-10 rounded-md"
+                  src={google.src}
+                  alt="google"
+                />
+              </div>
+              <h4>or</h4>
+              <label>Email</label>
+              <input
+                type="email"
+                placeholder="Your email..."
+                required
+                ref={emailRef}
+              />
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="Your password..."
+                required
+                ref={passwordRef}
+              />
+              <label>Re-enter Password</label>
+              <input
+                type="password"
+                placeholder="Re-enter password..."
+                required
+                ref={rePasswordRef}
+              />
+              <input type="submit" value="Submit" onClick={signUpHandler} />
+            </div>
           </div>
-          <div className={styles.signUpForm} >
-            <h1>Create Account</h1>
-            <div className='flex justify-center items-center mb-3 cursor-pointer' onClick={handleSignInGoogle}>
-            <img className='w-10 rounded-md' src={google.src} alt="google" />
-          </div>
-          <h4>or</h4>
-            <label>Email</label>
-            <input type='email' placeholder='Your email...' required ref={emailRef} />
-            <label>Password</label>
-            <input type='password' placeholder='Your password...' required ref={passwordRef} />
-            <label>Re-enter Password</label>
-            <input type='password' placeholder='Re-enter password...' required ref={rePasswordRef} />
-            <input type='submit' value='Submit' onClick={signUpHandler} />
-          </div>
+          <SocialMediaFooter />
         </div>
-        <SocialMediaFooter />
-      </div>
-    </Layout>
+      </Layout>
     </>
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;
