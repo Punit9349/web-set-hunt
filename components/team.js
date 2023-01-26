@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-import { UPDATE_USER } from '../reducers/userReducer';
+import { UPDATE_TEAM } from '../reducers/teamReducer';
+import { ADD_TEAM_DATA, UPDATE_USER } from '../reducers/userReducer';
 import styles from '../styles/Home4.module.css';
 import networkRequest from '../utils/request';
 import customToast from '../utils/toast';
@@ -29,12 +30,7 @@ function Team() {
             if (response.status === 200) {
                 customToast(response?.data?.message ? response.data.message : 'Created Team', 'success');
                 const { teamName, teamId } = response.data.team;
-                const newObj = {
-                    ...user,
-                    teamId,
-                    teamName
-                };
-                dispatch(UPDATE_USER(newObj))
+                dispatch(ADD_TEAM_DATA({teamName,teamId}));
             }
             else {
                 customToast(response?.data?.message ? response.data.message : 'Team Creation Failed', 'failure');
@@ -53,6 +49,27 @@ function Team() {
                 return false;
         })
     }
+
+     async function handleJoinTeam(event){
+        event.preventDefault();
+        if(teamCodeRef && teamCodeRef.current && teamCodeRef.current.value){
+            const url = process.env.NEXTAUTH_URL+'/api/team/joinTeam';
+            console.log(teamCodeRef.current.val);
+            const response = await networkRequest('POST',url,{teamId:teamCodeRef.current.value})
+            console.log(response);
+            if(response.status === 200){
+                const {team,user}=response.data;
+                dispatch(UPDATE_TEAM(team));
+                dispatch(UPDATE_USER(user));
+                customToast(response.data.message,'success');
+            }
+            else{
+                customToast(response.data.message,'failure');
+            }
+        }
+     }
+
+    
 
     return (
         <div className={styles.teamContainer}>

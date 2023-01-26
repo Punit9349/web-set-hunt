@@ -4,14 +4,12 @@ export const team = createSlice({
     name:'team',
     initialState:null,
     reducers:{
-        TEAM_MEMBERS: (state)=>{
-            return state
+        UPDATE_TEAM: (state,action)=>{
+            return action.payload
         },
-        NEW_MEMBER_ADDED: (state)=>{
-            return state
-        },
+       
     }
 });
 
-export const {TEAM_MEMBERS,NEW_MEMBER_ADDED}=team.actions;
+export const {UPDATE_TEAM}=team.actions;
 export default team.reducer;

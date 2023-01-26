@@ -169,7 +169,7 @@ color:#9537FF;
 .gamingArena{
     width: 100vw;
     height:100vh;
-    background-image: url('../public/background_compressed_4.png');
+    background-image: url('../public/dull_main.gif');
     background-color: black;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -427,9 +427,9 @@ color:#9537FF;
 /* Team Component */
 .teamContainer{
     width: 50%;
-    max-width: 450px;
+    max-width: 400px;
     height: fit-content;
-    background-color: #D5FC34;
+    background-color: #9437ff42;
     display: flex;
     justify-content: center;
     border-radius: 16px;
@@ -455,7 +455,7 @@ color:#9537FF;
 .teamDetails h1{
     font-weight: 700;
     font-size: 22px;
-    color:black;
+    color:#D5FC34;
 }
 
 .teamNameCode{
@@ -468,7 +468,7 @@ color:#9537FF;
 
 .teamNameCode label{
     font-size: 16px;
-    color:black;
+    color:#D5FC34;
     align-self: flex-start;
     font-weight: 650;
 }
@@ -478,9 +478,8 @@ color:#9537FF;
     height: 40px;
     border-radius: 8px;
     padding:10px;
-    background-color: #9537FF;
-    color:white;
-    font-weight: 600;
+    background-color: #d4fc34db;
+    color:black;
     font-size: 17px;
     border:none;
 }
@@ -524,7 +523,7 @@ color:#9537FF;
 }
 
 .teamCreation form input{
-    width: 90%;
+    width: 85%;
     max-width: 350px;
     padding:5px 10px;
     height: 40px;
@@ -552,7 +551,7 @@ color:#9537FF;
 }
 
 .teamCreationButtonInActive{
-    background-color: #89a320;
+    background-color: #d4fc34ab;
 }
 
 

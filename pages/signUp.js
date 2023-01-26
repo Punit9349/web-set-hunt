@@ -16,13 +16,13 @@ const SignUp = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  // useEffect(()=>{
-  //   if(status!=="loading"){
-  //     if(status==="authenticated"){
-  //       router.push('/lobby');
-  //     }
-  //   }
-  // },[session,status]);
+  useEffect(()=>{
+    if(status!=="loading"){
+      if(status==="authenticated"){
+        router.push('/lobby');
+      }
+    }
+  },[session,status]);
 
   async function signUpHandler(event) {
     event.preventDefault();

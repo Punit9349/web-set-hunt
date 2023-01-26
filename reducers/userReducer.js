@@ -33,7 +33,6 @@ export const user = createSlice({
             const {teamName,teamId}=action.payload;
 			state['teamName']=teamName;
 			state['teamId']=teamId;
-			console.log(state);
 			return state;
         }
     }
