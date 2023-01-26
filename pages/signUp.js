@@ -1,29 +1,24 @@
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
+import Layout from '../components/layout';
 import SocialMediaFooter from '../components/SocialMediaFooter';
-import { UPDATE_USER } from '../reducers/userReducer';
 import styles from '../styles/Home4.module.css';
 import networkRequest from '../utils/request';
 import customToast from '../utils/toast';
+import google from '../public/google.svg';
 
 const SignUp = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const rePasswordRef = useRef();
-  const dispatch = useDispatch();
   const router = useRouter();
   const { data: session, status } = useSession();
 
   useEffect(()=>{
     if(status!=="loading"){
-      dispatch(UPDATE_USER(session?.user));
-      if(status==="unauthenticated"){
-        router.push('/login');
-      }
-      else{
+      if(status==="authenticated"){
         router.push('/lobby');
       }
     }
@@ -48,15 +43,21 @@ const SignUp = () => {
     // console.log(result);
     if (Math.floor(Number(result.status) / 100) === 2) {
        router.push('/lobby');
-       dispatch(UPDATE_USER(result?.data?.user));
     }
     else {
       toast(result?.data?.message, 'failure');
     }
   }
 
+  async function handleSignInGoogle(){
+    const response = await signIn('google',{callbackUrl:'/lobby'});
+    console.log(response);
+  }
+
   return (
     <>
+    <Layout>
+
       <ToastContainer />
       <div className={styles.signUpPage}>
         <div className={styles.signUpFormContainer}>
@@ -65,6 +66,10 @@ const SignUp = () => {
           </div>
           <div className={styles.signUpForm} >
             <h1>Create Account</h1>
+            <div className='flex justify-center items-center mb-3 cursor-pointer' onClick={handleSignInGoogle}>
+            <img className='w-10 rounded-md' src={google.src} alt="google" />
+          </div>
+          <h4>or</h4>
             <label>Email</label>
             <input type='email' placeholder='Your email...' required ref={emailRef} />
             <label>Password</label>
@@ -76,6 +81,7 @@ const SignUp = () => {
         </div>
         <SocialMediaFooter />
       </div>
+    </Layout>
     </>
   )
 }

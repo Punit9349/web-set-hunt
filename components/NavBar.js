@@ -9,13 +9,13 @@ import { UPDATE_USER } from '../reducers/userReducer';
 
 function NavBar() {
     const dispatch=useDispatch();
-	const {data:session,status}=useSession();
+	// const {data:session,status}=useSession();
 
-	useEffect(()=>{
-       if(status==='unauthenticated'){
-		 dispatch(UPDATE_USER(session?.user));
-	   }
-	},[status,session]);
+	// useEffect(()=>{
+    //    if(status==='unauthenticated'){
+	// 	 dispatch(UPDATE_USER(session?.user));
+	//    }
+	// },[status,session]);
 
 	function handleLobby(value){
 		dispatch(UPDATE_LOBBY(value));

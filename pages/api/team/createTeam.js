@@ -16,12 +16,16 @@ const generateTeamCode = (count) => {
 };
 
 const createTeam = async (req, res) => {
-  const isValid = await verifySession(req,res,authOptions);
+  if(req.method !=='POST')
+  return res.status(errorCodes.NOT_FOUND).json({message:'wrong request method'});
+
+  const {isValid,session} = await verifySession(req,res,authOptions);
   if(!isValid){
     return res.status(errorCodes.FORBIDDEN).json({ message: 'Unauthorized!' });
   }
   const teamId = generateTeamCode(6);
-  const { teamName, email } = req.body;
+  const { teamName } = req.body;
+  const {email}=session.user;
   try {
     await connectToDatabase();
     let user = await User.findOne({ email });

@@ -7,8 +7,7 @@ import SocialMediaFooter from '../components/SocialMediaFooter';
 import { useRouter } from 'next/router';
 import { toast, ToastContainer } from 'react-toastify';
 import customToast, { toastCodes } from '../utils/toast';
-import { useDispatch } from 'react-redux';
-import { UPDATE_USER } from '../reducers/userReducer';
+import Layout from '../components/layout';
 
 
 const Login = () => {
@@ -16,11 +15,9 @@ const Login = () => {
   const passwordRef= useRef();
   const router = useRouter();
   const {data:session,status}=useSession();
-  const dispatch = useDispatch();
 
   useEffect(()=>{
     if(status!=="loading"){
-      dispatch(UPDATE_USER(session?.user));
       if(status==="authenticated"){
         router.push('/lobby');
       }
@@ -49,7 +46,7 @@ const Login = () => {
   return (
 
     <>
-    
+    <Layout >
     <style jsx>
     {`
         .bg-pos{
@@ -95,6 +92,7 @@ const Login = () => {
       </div>
       <SocialMediaFooter />
     </div>
+    </Layout>
     
     </>
     

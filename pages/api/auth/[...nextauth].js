@@ -27,9 +27,9 @@ export const authOptions = {
         if(!isValid){
           return null;
         }
-        user = await user.toObject();
-        delete user.password;
-        return user;
+        return {
+          email:[user.email]
+        };
       },
     }),
     GoogleProvider({
@@ -39,26 +39,28 @@ export const authOptions = {
   ],
   callbacks:{
     jwt:async({token,user,account})=>{
-      // console.log('token callback');
-      try{
-        // console.log(token);
-        // console.log(user);
-        // console.log('account');
-        // console.log(account);
-        if(user && user.email){
-          await connectToDatabase();
-          const newUser = await User.findOne({email:[user.email]});
-          // console.log('newUser');
-          // console.log(newUser);
-          token.user = newUser;
-          // console.log(token);
-          return token;
-        }
-      }
-      catch(error){
-        console.log(error);
-        return token;
-      } 
+      // // console.log('token callback');
+      // try{
+      //   // console.log(token);
+      //   // console.log(user);
+      //   // console.log('account');
+      //   // console.log(account);
+      //   // if(user && user.email){
+      //   //   await connectToDatabase();
+      //   //   const newUser = await User.findOne({email:[user.email]});
+      //     // console.log('newUser');
+      //     // console.log(newUser);
+      //     // token.user = newUser;
+      //     // console.log(token);
+      //     return token;
+      //   }
+      // }
+      // catch(error){
+      //   console.log(error);
+      //   return token;
+      // } 
+      // return token;
+      user&&(token.user=user);
       return token;
     },
     session:async({session,token})=>{

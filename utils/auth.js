@@ -14,7 +14,7 @@ export async function verifyPassword(password, hashedPassword) {
 export async function verifySession(req,res,authOptions){
   const session = await unstable_getServerSession(req, res, authOptions);
   if (!session) {
-    return false;
+    return {isValid:false,session};
   }
-  return true;
+  return {isValid:true,session};
 }

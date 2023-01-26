@@ -8,19 +8,19 @@ import { verifySession } from '../../utils/auth';
 
 
 async function handler(req, res) {
-  const isValid = await verifySession(req,res,authOptions);
+  const {isValid,session} = await verifySession(req,res,authOptions);
   if(!isValid){
     return res.status(errorCodes.FORBIDDEN).json({ message: 'Unauthorized!' });
   }
   if (req.method == 'GET') {
-     await getQuestion(req,res);
+     await getQuestion(req,res,session);
   }
   else if (req.method === 'POST') {
      await submitQuestion(req,res);
   }
 }
 
-async function getQuestion(req,res){
+async function getQuestion(req,res,session){
   try {
     await connectToDatabase();
     let currentTime = new Date();
@@ -29,7 +29,7 @@ async function getQuestion(req,res){
     if(Date.parse(currentTime)<Date.parse(startTime) || Date.parse(currentTime)>Date.parse(endTime)){
       return res.status(errorCodes.BAD_REQUEST).json({message:'contest is from '+ process.env.START_TIME+'to '+process.env.END_TIME});
     }
-    const { email } = req.body;
+    const { email } = session?.user;
     let user = await User.findOne({ email });
 
     const teamId = user.teamId;
@@ -58,7 +58,7 @@ async function getQuestion(req,res){
 }
 
 async function submitQuestion(req,res){
-  const { email } = req.userData;
+  const { email } = req.body;
     try {
       await connectToDatabase();
       let currentTime = new Date();
