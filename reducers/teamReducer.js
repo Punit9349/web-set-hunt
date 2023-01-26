@@ -2,9 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const team = createSlice({
     name:'team',
-    initialState:{
-        team:null
-    },
+    initialState:null,
     reducers:{
         TEAM_MEMBERS: (state)=>{
             return state

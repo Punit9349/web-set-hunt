@@ -1,37 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MdOutlineLogout } from 'react-icons/md';
 import { NavbarData } from '../utils/NavBarData';
-import Link from 'next/link';
 import styles from '../styles/Home4.module.css';
 import { useDispatch } from 'react-redux';
 import { UPDATE_LOBBY } from '../reducers/lobbyReducer';
+import { signOut, useSession } from 'next-auth/react';
+import { UPDATE_USER } from '../reducers/userReducer';
 
 function NavBar() {
     const dispatch=useDispatch();
+	// const {data:session,status}=useSession();
+
+	// useEffect(()=>{
+    //    if(status==='unauthenticated'){
+	// 	 dispatch(UPDATE_USER(session?.user));
+	//    }
+	// },[status,session]);
 
 	function handleLobby(value){
 		dispatch(UPDATE_LOBBY(value));
 	}
 
 	const handleLogout = () => {
-		// const auth=getAuth();
-		// dispatch({
-		// 	type:'SHOW_LOADER'
-		// });
-		// signOut(auth).then(()=>{
-		// 	dispatch({
-		// 		type:'REMOVE_LOADER'
-		// 	})
-		// 	console.log('sign out successfull');
-		// 	toast('Signed Out Successfully')
-		// 	navigate('/signin');
-		// }).catch((error)=>{
-		// 	dispatch({
-		// 		type:'REMOVE_LOADER'
-		// 	})
-		// 	toast(error.message);
-		// 	console.log('sign out error'+ error);
-		// })
+		signOut({callbackUrl:'/login'});
+		dispatch({type:'SIGN_OUT'});
 	};
 
 	return (

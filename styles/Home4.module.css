@@ -168,7 +168,7 @@ color:#9537FF;
 /* Gaming arena */
 
 .gamingArena{
-    width: 100%;
+    width: 100vw;
     height:100vh;
     background-image: url('../public/background.svg');
     background-repeat: no-repeat;
@@ -177,7 +177,7 @@ color:#9537FF;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    justify-content: center;
 }
 
 .gAquestionsComponent{
@@ -189,7 +189,6 @@ color:#9537FF;
     display: flex;
     align-items: center;
     overflow: hidden;
-    transform: translate(0,10%);
 }
 
 .gAquestionsContainer{
@@ -240,7 +239,9 @@ color:#9537FF;
     background-size: cover;
     width: 90px;
     height: 90px;
-    transform: translate(0,30%);
+    position: absolute;
+    top:28px;
+    left:47%;
 }
 
 /* Navigation bar */
@@ -250,12 +251,11 @@ color:#9537FF;
     left:20px;
     top:18%;
 	height:fit-content;
-    /* min-height: 500px; */
     min-height: 70%;
     max-height: 80%;
     background-color: #9537FF;
-    width: 8%;
-	border-radius: 1rem;
+    width: 100px;
+	border-radius: 16px;
 	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 	padding: 3vh;
 	display: flex;
@@ -314,29 +314,36 @@ color:#9537FF;
 /* profile container */
 
 .profileContainer{
-   width: 100%;
-   /* margin-top: 50px; */
-   height: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+   width: fit-content;
+   height: fit-content;
+}
+
+.profilePicture{    
+    background-image: url('../public/hacker.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    margin-top: 20px;
 }
 
 .profileSection{
-    width: auto;
-    height: 340px;
+    width: fit-content;
+    height: fit-content;
     background-color: #9537FF;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    position: relative;
 }
 
 .profileDetails{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap:40px 100px;
+    padding:40px
 }
 
 .profileDetail{
@@ -363,6 +370,197 @@ color:#9537FF;
     font-size: 20px;
     color:white
 }
+
+.profileEditButton{
+    position: absolute;
+    width: 110px;
+    height: 40px;
+    right:10px;
+    top: 10px;;
+    background-color: #D5FC34;
+    border-radius: 8px;
+    padding:8px;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 650;
+    cursor: pointer;
+    color:black 
+}
+
+.profileEditButton div{
+    width: 20px;
+    height: 20px;
+    background: url('../public/editing.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 10px;
+}
+
+
+.hideButton{
+    display: none;
+}
+
+.profileFooterButtons{
+    display: flex;
+    width: 200px;
+    display: flex;
+    height: fit-content;
+    justify-content: space-between;
+}
+
+.saveChanges{
+    width: 90px;
+    height: 40px;
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: 650;
+    overflow: hidden;
+    background-color: #D5FC34;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+
+/* Team Component */
+.teamContainer{
+    width: 50%;
+    max-width: 450px;
+    height: fit-content;
+    background-color: #D5FC34;
+    display: flex;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+
+.teamDetails{
+    width:350px;
+    height: 350px;
+    /* background-color: black; */
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+.teamJoined{
+    justify-content: space-evenly;
+}
+
+.teamDetails h1{
+    font-weight: 700;
+    font-size: 22px;
+    color:black;
+}
+
+.teamNameCode{
+    display: flex;
+    width: 250px;
+    height: fit-content;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teamNameCode label{
+    font-size: 16px;
+    color:black;
+    align-self: flex-start;
+    font-weight: 650;
+}
+
+.teamNameCode input{
+    width:100%;
+    height: 40px;
+    border-radius: 8px;
+    padding:10px;
+    background-color: #9537FF;
+    color:white;
+    font-weight: 600;
+    font-size: 17px;
+    border:none;
+}
+
+.teamNameCode input:focus,.teamCreation input:focus{
+    outline:none;
+}
+
+.teamJoiningOptions{
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: antiquewhite; */
+}
+
+.teamJoiningOptions button{
+    width: fit-content;
+    padding:5px 20px;
+    border-radius: 32px;
+    height: fit-content;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 650;
+    color:white;
+}
+
+.teamCreation{
+    width: 100%;
+    height: 200px;
+}
+
+.teamCreation form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+}
+
+.teamCreation form input{
+    width: 90%;
+    max-width: 350px;
+    padding:5px 10px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #9537FF;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.teamCreation form button{
+    color: white;
+    font-size: 20px;
+    font-weight: 650;
+    text-align: center;
+    width: fit-content;
+    padding:5px 20px;
+    height: fit-content;
+    background-color: #9537FF;
+    border-radius: 32px;
+}
+
+.teamCreationButtonActive{
+    background-color: #9537FF;
+}
+
+.teamCreationButtonInActive{
+    background-color: #89a320;
+}
+
+
+
+
+
+
+
+
 
 
 

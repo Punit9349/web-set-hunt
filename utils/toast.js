@@ -1,6 +1,12 @@
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+export const toastCodes = {
+   SUCCESS:'SUCCESS',
+   FAILURE:'FAILURE',
+   WARNING:'WARNING'
+};
+
 export default function customToast(text,result){
    if(result.toUpperCase()==='SUCCESS')
    return toast.success(text,{

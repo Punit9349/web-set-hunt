@@ -2,6 +2,8 @@ import errorCodes from "../../../utils/errorCodes";
 import User from "../../../models/User";
 import Team from "../../../models/Team";
 import connectToDatabase from '../../../utils/database';
+import { authOptions } from "../auth/[...nextauth]";
+import { verifySession } from "../../../utils/auth";
 
 const generateTeamCode = (count) => {
   const chars = "acdefhiklmnoqrstuvwxyz0123456789".split("");
@@ -14,8 +16,16 @@ const generateTeamCode = (count) => {
 };
 
 const createTeam = async (req, res) => {
+  if(req.method !=='POST')
+  return res.status(errorCodes.NOT_FOUND).json({message:'wrong request method'});
+
+  const {isValid,session} = await verifySession(req,res,authOptions);
+  if(!isValid){
+    return res.status(errorCodes.FORBIDDEN).json({ message: 'Unauthorized!' });
+  }
   const teamId = generateTeamCode(6);
-  const { teamName,email } = req.body;
+  const { teamName } = req.body;
+  const {email}=session.user;
   try {
     await connectToDatabase();
     let user = await User.findOne({ email });
@@ -47,7 +57,7 @@ const createTeam = async (req, res) => {
       .status(errorCodes.SUCCESS)
       .json({
         message: "Team created successfully",
-        team:newTeam,
+        team: newTeam,
       });
   } catch (err) {
     return res
