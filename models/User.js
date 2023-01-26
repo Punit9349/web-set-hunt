@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
   },
   rollNumber: {
     type: Number,
-    unique:true
   },
   email: {
     type: String,

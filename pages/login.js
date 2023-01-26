@@ -74,11 +74,11 @@ const Login = () => {
             <form className='w-full lg:w-1/5'>
                 <div className='mb-6'>
                   <label className='text-white font-semibold text-lg' htmlFor="email">Email</label> <br/>
-                  <input className='bg-neon px-2 py-1 lg:px-4 lg:py-2 text-gray-700 text-lg mt-2 w-full rounded-lg' type="email" id="email"  name="email" placeholder='Email' required ref={emailRef}/>
+                  <input className='bg-neon px-2 py-1 lg:px-4 lg:py-2 text-gray-700 text-lg mt-2 w-full rounded-lg hover:outline-0 border-0 ' type="email" id="email"  name="email" placeholder='Email' required ref={emailRef}/>
                 </div>
                 <div className='mb-10'>
                   <label className='text-white font-semibold text-lg' htmlFor="pass">Password</label> <br/>
-                  <input className='bg-neon px-2 py-1 lg:px-4 lg:py-2 text-gray-700 text-lg mt-2 w-full rounded-lg' type="password" id="pass"  name="password" placeholder='Password' required ref={passwordRef} />
+                  <input className='bg-neon px-2 py-1 lg:px-4 lg:py-2 text-gray-700 text-lg mt-2 w-full rounded-lg hover:outline-0 border-0' type="password" id="pass"  name="password" placeholder='Password' required ref={passwordRef} />
                 </div>
 
                 <div className='flex justify-center'>

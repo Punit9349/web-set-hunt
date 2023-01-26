@@ -1,6 +1,5 @@
-import React from 'react'
-import { useState } from 'react'
-import styles from '../styles/Home4.module.css'
+import React from 'react';
+import styles from '../styles/Home4.module.css';
 
 const Timer = () => {
     // const techSpardhaEve = '26 Jan 2023';

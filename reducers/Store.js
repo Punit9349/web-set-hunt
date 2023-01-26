@@ -6,6 +6,7 @@ import userReducer from "./userReducer";
 import { persistReducer, persistStore } from 'redux-persist';
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import logger from "redux-logger";
+import questionReducer from "./questionReducer";
 
 const createNoopStorage = () => {
   return {
@@ -30,7 +31,8 @@ export const configuredStore = (passedStorage) => {
         team: teamReducer,
         loader: loaderReducer,
         user: userReducer,
-        lobby: lobbyReducer
+        lobby: lobbyReducer,
+        questions:questionReducer
     });
 
     const rootReducer = (state,action)=>{

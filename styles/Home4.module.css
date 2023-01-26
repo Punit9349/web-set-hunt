@@ -15,7 +15,6 @@
     align-items: center;
     background-image: url("/background.svg");
     justify-content: center;
-
     box-sizing: border-box;
     background-color: black;
 }
@@ -170,9 +169,11 @@ color:#9537FF;
 .gamingArena{
     width: 100vw;
     height:100vh;
-    background-image: url('../public/background.svg');
+    background-image: url('../public/background_compressed_4.png');
+    background-color: black;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
+    background-position: center;
     background-color: black;
     display: flex;
     flex-direction: column;
