@@ -52,9 +52,9 @@ const Lobby = () => {
 
         <NavBar />
         <div className={styles.gamingArena}>
-          <div className={styles.gamingArenaMicrobusLogo}>
+          {/* <div className={styles.gamingArenaMicrobusLogo}>
 
-          </div>
+          </div> */}
           {lobbyValue === 0 ? <Questions /> :
             lobbyValue === 1 ? <Profile /> :
               lobbyValue === 2 ? <Leader /> : 

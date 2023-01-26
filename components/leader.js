@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect, useState } from 'react'
 import { CgProfile } from 'react-icons/cg';
 import networkRequest from '../utils/request';
+import LeaderBoardEntry from './leaderBoardEntry';
 
 const Leader = () => {
-
+  const [leaderBoard,setLeaderBoard]=useState([]);
+  console.log(leaderBoard);
   useEffect(()=>{
     async function fetchLeaderBoard(){
       const url = process.env.NEXTAUTH_URL+'/api/leaderBoard';
       const response = await networkRequest('GET',url,{});
       console.log(response);
+      if(response.status===200){
+        console.log(response.data.leaderBoard);
+         setLeaderBoard(()=>response.data.leaderBoard);
+      }
     }
     fetchLeaderBoard();
   },[]);
@@ -36,22 +40,19 @@ const Leader = () => {
           </div>
         </div>
 
-        <div className='flex flex-row justify-between items-center bg-[#9537FF] opacity-85 rounded-md h-11 mt-5'>
-          <div className='flex flex-row my-2'>
-          <div className='ml-3'><CgProfile size='40' color='white'/></div>
-          <div className='text-white pl-5 mt-1 text-bold'>Name</div>
-          </div>
-          <div className='mr-4 font-semi text-black text-2xl bg-[#D5FC34] rounded-full h-8 w-8 flex justify-center items-center'>4</div>
-        </div>
+        {
+          leaderBoard && leaderBoard[3] ?
+          <LeaderBoardEntry item={leaderBoard[3]} />
+          :
+          <></>
+        }
+        {
+          leaderBoard && leaderBoard[4] ?
+          <LeaderBoardEntry item={leaderBoard[3]} />
+          :
+          <></>
+        }
 
-
-        <div className='flex flex-row justify-between items-center bg-[#9537FF] opacity-85 rounded-md h-11 mt-1.5'>
-          <div className='flex flex-row my-2'>
-          <div className='ml-3'><CgProfile size='40' color='white' /></div>
-          <div className='text-white pl-5 mt-1 text-bold'>Name</div>
-          </div>
-          <div className='mr-4 font-semi text-black text-2xl bg-[#D5FC34] rounded-full h-8 w-8 flex justify-center items-center'>5</div>
-        </div>
 
         <div className='text-lg text-[#D5FC34] font-sans mt-4'>Your Position</div>
 

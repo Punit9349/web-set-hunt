@@ -14,21 +14,27 @@ export const authOptions = {
       name: 'credentials',
       async authorize(credentials) {
         await connectToDatabase();
+        // console.log(credentials);
+        // console.log(credentials.email +" "+credentials.password);
         if(!credentials || !credentials.email || !credentials.password){
+          console.log('fallback');
           return null;
         }
+        // console.log('fetching user');
         let user = await User.findOne({
           email: credentials.email,
         });
+        // console.log(user);
         if(!user){
           return null;
         }
         const isValid = await verifyPassword(credentials.password,user.password);
+        // console.log(isValid);
         if(!isValid){
           return null;
         }
         return {
-          email:[user.email]
+          email:user.email
         };
       },
     }),
@@ -74,8 +80,10 @@ export const authOptions = {
     signIn:async({ user})=>{
       try{
         await connectToDatabase();
-         const entry = await User.findOne({email:[user.email]});
-        //  console.log(entry);
+        // console.log(user);
+        const {email}=user;
+         const entry = await User.findOne({email});
+         console.log(entry);
          if(!entry){
             const newUser = new User({
               email:user.email,
@@ -83,12 +91,6 @@ export const authOptions = {
               loginWithGoogle: true
             });
             await newUser.save();
-         }
-         else{
-           const {loginWithGoogle} = entry;
-           if(!loginWithGoogle){
-              return false;
-           }
          }
          return true;
       }

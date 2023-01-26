@@ -49,7 +49,7 @@ async function getQuestion(req,res,session){
       return res.status(errorCodes.NOT_FOUND).json({ message: "ques not found" });
     }
     const { questionNo, questionURL } = question;
-    return res.json({ questionNo, questionURL });
+    return res.status(errorCodes.SUCCESS).json({ questionNo, questionURL });
   } catch (err) {
     return res
       .status(errorCodes.BAD_REQUEST)

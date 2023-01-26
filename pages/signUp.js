@@ -16,13 +16,13 @@ const SignUp = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  useEffect(()=>{
-    if(status!=="loading"){
-      if(status==="authenticated"){
-        router.push('/lobby');
-      }
-    }
-  },[session,status]);
+  // useEffect(()=>{
+  //   if(status!=="loading"){
+  //     if(status==="authenticated"){
+  //       router.push('/lobby');
+  //     }
+  //   }
+  // },[session,status]);
 
   async function signUpHandler(event) {
     event.preventDefault();
@@ -36,13 +36,14 @@ const SignUp = () => {
     }
     const url = process.env.NEXTAUTH_URL + '/api/auth/signup';
     const data = {
-      email: [emailRef.current.value],
-      password: [passwordRef.current.value]
+      email: emailRef.current.value,
+      password: passwordRef.current.value
     };
     const result = await networkRequest('POST', url, data);
-    // console.log(result);
+    console.log(result);
     if (Math.floor(Number(result.status) / 100) === 2) {
-       router.push('/lobby');
+      customToast('account created, login','success');
+      router.push('/login');
     }
     else {
       toast(result?.data?.message, 'failure');
