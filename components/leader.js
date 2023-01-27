@@ -9,6 +9,7 @@ import third from '../public/33.png';
 import firstPrize from '../public/winner.png';
 import secondPrize from '../public/silver-medal.png';
 import thirdPrize from '../public/broze-medal.png';
+import { SHOW_LOADER } from "../reducers/loaderReducer";
 
 const Leader = () => {
   const leaderBoard = useSelector((state) => state.leader);
