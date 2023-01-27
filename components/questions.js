@@ -26,9 +26,9 @@ function Questions() {
         const { questionNo, questionURL } = response.data;
         dispatch(UPDATE_QUESTION({ questionNo, questionURL }));
       }
-      else if (response.status === 205) {
+      else if (response.status === 201) {
         customToast('All questions done!', 'success');
-        dispatch(UPDATE_QUESTION({ questionNo: '14', questionURL: '' }));
+        dispatch(UPDATE_QUESTION({ questionNo: '', questionURL: '' }));
         setDisable(true);
       }
     }
@@ -89,13 +89,13 @@ function Questions() {
       }
       const response = await networkRequest('POST', url, data);
       // console.log(response);
-      if (response.status === 204) {
+      if (response.status === 200) {
         customToast(response.data.message, 'success');
         const { questionNo, questionURL } = response.data;
         dispatch(UPDATE_QUESTION({ questionNo, questionURL }));
         ansRef.current.value = '';
       }
-      else if (response.status === 205) {
+      else if (response.status === 201) {
         customToast('All questions done!', 'success');
         setDisable(true);
         dispatch(UPDATE_QUESTION({ questionNo: 100, questionURL: null }));

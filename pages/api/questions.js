@@ -46,7 +46,7 @@ async function handler(req, res) {
       const curQues = team.solveCount + 1;
       const totalQuestions = (await Question.find({})).length;
       if (curQues > totalQuestions) {
-        return res.status(errorCodes.SUCCESS_ALL_DONE).json({ message: "All questions done!" });
+        return res.status(201).json({ message: "All questions done!" });
       }
       const question = await Question.findOne({ questionNo: curQues });
       if (!question) {
@@ -62,6 +62,7 @@ async function handler(req, res) {
   }
   else if (req.method === 'POST') {
     try {
+      // console.log('received req');
       const { email } = session?.user;
       await connectToDatabase();
       let currentTime = new Date();
@@ -81,13 +82,17 @@ async function handler(req, res) {
       let team = await Team.findOne({ teamId });
       const curQues = team.solveCount + 1;
       const totalQuestions = (await Question.find({})).length;
+      // console.log(curQues+" "+totalQuestions);
       if (curQues > totalQuestions) {
         return res.status(errorCodes.SUCCESS_ALL_DONE).json({ message: "All questions done!" });
       }
-      const isNext = curQues+2<totalQuestions;
+      const isNext = curQues+1<=totalQuestions;
       const ques = await Question.findOne({ questionNo: curQues });
-      const submittedAns = req.body.teamAns;
-      if (submittedAns !== ques.questionAns) {
+      let submittedAns = req.body.teamAns;
+      if(submittedAns){
+        submittedAns = submittedAns.toLowerCase();
+      }
+      if (submittedAns !== ques.questionAns.toLowerCase()) {
         return res.status(errorCodes.SUCCESS_WRONG_ANS).json({ message: "Wrong answer" });
       }
       const TimeNow = new Date();
@@ -97,12 +102,13 @@ async function handler(req, res) {
         { new: true }
       );
       if(isNext){
-          const nextQuestion = await Question.findOne({questionNo:curQues+2});
+          const nextQuestion = await Question.findOne({questionNo:curQues+1});
+          // console.log(nextQuestion);
           const {questionNo,questionURL} = nextQuestion;
-          return res.status(errorCodes.SUCCESS_CORRECT_ANS).json({ message: "Correct Answer", questionNo,questionURL});
+          return res.status(200).json({ message: "Correct Answer", questionNo,questionURL});
       }
       else{
-          return res.status(errorCodes.SUCCESS_ALL_DONE).json({message:'All questions done!'});
+          return res.status(201).json({message:'All questions done!'});
       }
     } catch (err) {
       // console.log(err);
