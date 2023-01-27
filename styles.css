@@ -2,7 +2,7 @@
 
 body {
   background-color: black;
-  background-image: url('loading_page/background.svg');
+  /* background-image: url('loading_page/background.svg'); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;

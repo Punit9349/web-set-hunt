@@ -5,7 +5,6 @@ import teamReducer from "./teamReducer";
 import userReducer from "./userReducer";
 import { persistReducer, persistStore } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
-import logger from "redux-logger";
 import questionReducer from "./questionReducer";
 import leaderReducer from "./leaderReducer";
 
@@ -69,7 +68,7 @@ export const configuredStore = (passedStorage) => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
-      }).concat(logger),
+      }),
   });
 
   const persistor = persistStore(store);

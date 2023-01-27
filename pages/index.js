@@ -9,7 +9,7 @@ import Layout from "../components/layout";
 const inter = Inter({ subsets: ["latin"] });
 
 const Home = () => {
-  const img = "/background.svg";
+  const img = "/bg_login.png";
   const mystyle = {
     width: "50vh",
     height: "45vh",
@@ -34,9 +34,9 @@ const Home = () => {
         <div className={styles.container}>
           <div className={styles.banner}>
             <a className={styles.bannera}>
-              <picture>
-                <img src="/title.png" alt="Girl in a jacket" style={mystyle} />
-              </picture>
+              {/* <picture>
+                <img src="/title-min.png" alt="background" />
+              </picture> */}
             </a>
             <div className={styles.items}>
               <div className="absolute left-8 bottom-8 ">

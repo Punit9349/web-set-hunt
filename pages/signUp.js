@@ -33,7 +33,7 @@ const SignUp = () => {
       return;
     }
     if (passwordRef.current.value !== rePasswordRef.current.value) {
-      customToast("The entered passwords don't match", "warning");
+      customToast("passwords mismatch", "warning");
       return;
     }
     const url = process.env.NEXTAUTH_URL + "/api/auth/signup";
