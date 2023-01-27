@@ -34,9 +34,9 @@ const Home = () => {
         <div className={styles.container}>
           <div className={styles.banner}>
             <a className={styles.bannera}>
-              {/* <picture>
-                <img src="/title-min.png" alt="background" />
-              </picture> */}
+              <picture>
+                <img src="/title-min.png" alt="background" style={mystyle}/>
+              </picture>
             </a>
             <div className={styles.items}>
               <div className="absolute left-8 bottom-8 ">
