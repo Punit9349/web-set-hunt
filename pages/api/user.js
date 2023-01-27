@@ -18,7 +18,7 @@ const handler = async (req, res) => {
             return res.status(errorCodes.SUCCESS).json({ message: 'details updated successfully', user: result });
         }
         catch (error) {
-            console.log(error);
+            // console.log(error);
             return res.status(errorCodes.INTERNAL_ERROR).json({ message: 'error in updating details' });
         }
     }
@@ -30,7 +30,7 @@ const handler = async (req, res) => {
             return res.status(errorCodes.SUCCESS).json({message:'user data fetched successfully',user:reqUser});
         }
         catch(error){
-            console.log(error);
+            // console.log(error);
             return res.status(errorCodes.FORBIDDEN).json({message:'user data fetching failed'});
         }
     }

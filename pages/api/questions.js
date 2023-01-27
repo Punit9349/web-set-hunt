@@ -19,7 +19,7 @@ async function handler(req, res) {
       let currentTime = new Date();
       let startTime = new Date(process.env.START_TIME);
       let endTime = new Date(process.env.END_TIME);
-      console.log(startTime+" "+endTime);
+      // console.log(startTime+" "+endTime);
       if(Date.parse(currentTime)<Date.parse(startTime) ){
         return res.status(errorCodes.SUCCESS_EVENT_NOT_START).json({message:'contest is from '+ process.env.START_TIME+'to '+process.env.END_TIME});
       }
@@ -98,7 +98,7 @@ async function handler(req, res) {
           return res.status(errorCodes.SUCCESS_ALL_DONE).json({message:'All questions done!'});
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       return res
         .status(errorCodes.BAD_REQUEST)
         .json({ message: "something went wrong" });

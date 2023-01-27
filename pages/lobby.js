@@ -22,13 +22,13 @@ const Lobby = () => {
   const { data: session, status } = useSession();
 
   useEffect(() => {
-    console.log(session);
+    // console.log(session);
     async function getUser() {
       const url = process.env.NEXTAUTH_URL + '/api/user';
       const data = {
       }
       const response = await networkRequest('GET', url, data);
-      console.log(response);
+      // console.log(response);
       if(response.status ===200){
          dispatch(UPDATE_USER(response.data.user));
       }

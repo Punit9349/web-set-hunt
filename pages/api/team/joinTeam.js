@@ -56,7 +56,7 @@ const joinTeam = async (req, res) => {
       .status(errorCodes.SUCCESS)
       .json({ message: "team joining successful", team,user });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     return res
       .status(errorCodes.INTERNAL_ERROR)
       .json({ message: "error in joining team" });

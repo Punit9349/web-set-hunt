@@ -46,7 +46,7 @@ const Profile = () => {
         name,email,mobileNumber,rollNumber  
       }
       const result = await networkRequest('POST',url,data);
-      console.log(result);
+      // console.log(result);
       const val =result?.data?.message;
       if(result.status===200){
         customToast(val?val:'details updated','success');

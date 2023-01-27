@@ -8,7 +8,7 @@ export const toastCodes = {
 };
 
 export default function customToast(text,result){
-   console.log(text,result);
+   // console.log(text,result);
    if(result.toUpperCase()==='SUCCESS')
    return toast.success(text,{
     position: toast.POSITION.TOP_RIGHT 

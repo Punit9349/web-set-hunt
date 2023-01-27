@@ -31,7 +31,7 @@ const getLeaderBoard = async (req, res) => {
         res.status(errorCodes.SUCCESS).json({ message: "Leaderboard loaded!", leaderboard: newLeaderboard });
 
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         res.status(errorCodes.INTERNAL_ERROR).json({ message: "something went wrong" });
     }
 };
