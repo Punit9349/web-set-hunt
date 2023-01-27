@@ -4,8 +4,15 @@ import Team from "../../../models/Team";
 import connectToDatabase from '../../../utils/database';
 import { authOptions } from "../auth/[...nextauth]";
 import { verifySession } from "../../../utils/auth";
+import runMiddleware from "../../../utils/cross-site";
 
 const joinTeam = async (req, res) => {
+  try{
+    await runMiddleware(req,res);
+  }
+  catch(error){
+    return res.status(500);
+  }
   if (req.method !== 'POST') {
     return res.status(errorCodes.NOT_FOUND).json({ message: 'check the http method used' });
   }

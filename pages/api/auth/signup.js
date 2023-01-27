@@ -4,6 +4,12 @@ import connectToDatabase from "../../../utils/database";
 import errorCodes from '../../../utils/errorCodes';
 
 async function handler(req, res) {
+  try{
+    await runMiddleware(req,res);
+  }
+  catch(error){
+    return res.status(500);
+  }
   if (req.method !== 'POST') {
     return;
   }

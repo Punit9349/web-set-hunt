@@ -5,9 +5,16 @@ import Question from '../../models/Question';
 import connectToDatabase from '../../utils/database';
 import { authOptions } from './auth/[...nextauth]';
 import { verifySession } from '../../utils/auth';
+import runMiddleware from '../../utils/cross-site';
 
 
 async function handler(req, res) {
+  try{
+    await runMiddleware(req,res);
+  }
+  catch(error){
+    return res.status(500);
+  }
   const {isValid,session} = await verifySession(req,res,authOptions);
   // console.log(session);
   if(!isValid){
