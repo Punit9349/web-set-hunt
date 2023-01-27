@@ -6,9 +6,11 @@ import { useDispatch } from 'react-redux';
 import { UPDATE_LOBBY } from '../reducers/lobbyReducer';
 import { signOut, useSession } from 'next-auth/react';
 import { UPDATE_USER } from '../reducers/userReducer';
+import { useRouter } from 'next/router';
 
 function NavBar() {
     const dispatch=useDispatch();
+	const router= useRouter();
 
 	const {data:session,status}=useSession();
 

@@ -87,7 +87,7 @@ const Login = () => {
                     Log in
                   </button>
                 </div>
-              <Link href='/signUp'><p className='text-xl mt-8 font-bold' style={{color:'#D5FC34',width:'100%',textAlign:'center'}}>Don't have an account?</p></Link>
+              <Link href='/signUp'><p className='text-xl mt-8 font-bold cursor-pointer' style={{color:'#D5FC34',width:'100%',textAlign:'center'}}>Don't have an account?</p></Link>
               </form>
           </div>
             

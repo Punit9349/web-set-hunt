@@ -98,7 +98,7 @@ const SignUp = () => {
                 ref={rePasswordRef}
               />
               <input type="submit" value="Submit" onClick={signUpHandler} />
-              <Link href='/login'><p className='text-xl font-bold' style={{color:'#9537FF',width:'100%',textAlign:'center'}}>Already have an account?</p></Link>
+              <Link href='/login'><p className='text-xl font-bold cursor-pointer' style={{color:'#9537FF',width:'100%',textAlign:'center'}}>Already have an account?</p></Link>
             </div>
           </div>
           <SocialMediaFooter />
