@@ -6,7 +6,10 @@ async function networkRequest(method,url,data){
         const response = await axios({
             method,
             url,
-            data
+            data,
+            headers: {
+                'Content-Type': 'application/json'
+              }
         });
         return response;
     }
