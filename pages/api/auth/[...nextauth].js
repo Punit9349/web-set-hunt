@@ -83,7 +83,7 @@ export const authOptions = {
         // console.log(user);
         const {email}=user;
          const entry = await User.findOne({email});
-         console.log(entry);
+        //  console.log(entry);
          if(!entry){
             const newUser = new User({
               email:user.email,
@@ -95,7 +95,7 @@ export const authOptions = {
          return true;
       }
       catch(error){
-        console.log(error);
+        // console.log(error);
         return false;
       }
     }

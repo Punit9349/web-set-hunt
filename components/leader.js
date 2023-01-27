@@ -21,9 +21,9 @@ const Leader = () => {
     async function fetchLeaderBoard() {
       const url = process.env.NEXTAUTH_URL + "/api/leaderBoard";
       const response = await networkRequest("GET", url, {});
-      console.log(response);
+      // console.log(response);
       if (response.status === 200) {
-        console.log(response.data.leaderboard);
+        // console.log(response.data.leaderboard);
         dispatch(UPDATE_LEADER(response.data.leaderboard));
       }
     }

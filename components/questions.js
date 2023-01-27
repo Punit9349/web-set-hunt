@@ -21,7 +21,7 @@ function Questions() {
     async function fetchQuestion() {
       const url = process.env.NEXTAUTH_URL + '/api/questions';
       const response = await networkRequest('GET', url, {});
-      console.log(response);
+      // console.log(response);
       if (response.status === 200) {
         const { questionNo, questionURL } = response.data;
         dispatch(UPDATE_QUESTION({ questionNo, questionURL }));
@@ -88,7 +88,7 @@ function Questions() {
         teamAns: ansRef.current.value
       }
       const response = await networkRequest('POST', url, data);
-      console.log(response);
+      // console.log(response);
       if (response.status === 204) {
         customToast(response.data.message, 'success');
         const { questionNo, questionURL } = response.data;

@@ -111,7 +111,7 @@ color:#9537FF;
 }
 
 .signUpFormMicroLogo{
-    background-image: url('../public/microbus.jpeg');
+    background-image: url('/microbus.jpeg');
     width: 90px;
     height:90px;
     margin-bottom: 20px;
@@ -124,7 +124,7 @@ color:#9537FF;
     width: 100vw;
     height: 100vh;
     position: relative;
-    background-image: url('../public/bright.gif');
+    background-image: url('/bright.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-color: black;
@@ -165,11 +165,11 @@ color:#9537FF;
 }
 
 .signUpSocialFb{
-    background-image: url('../public/facebook.png');
+    background-image: url('/facebook.png');
 }
 
 .signUpSocialInsta{
-    background-image: url('../public/insta.png');
+    background-image: url('/insta.png');
 }
 
 
@@ -178,7 +178,7 @@ color:#9537FF;
 .gamingArena{
     width: 100vw;
     height:100vh;
-    background-image: url('../public/dull_main.gif');
+    background-image: url('/dull_main.gif');
     background-color: black;
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -279,7 +279,7 @@ color:#9537FF;
 }
 
 .gamingArenaMicrobusLogo{
-    background-image: url('../public/microbus.jpeg');
+    background-image: url('/microbus.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -313,7 +313,7 @@ color:#9537FF;
 .whLogo {
 	width:50px;
     height: 50px;
-    background-image: url('../public/microbus.jpeg');
+    background-image: url('/microbus.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.6;
@@ -365,7 +365,7 @@ color:#9537FF;
 }
 
 .profilePicture{    
-    background-image: url('../public/hacker.png');
+    background-image: url('/hacker.png');
     background-size: cover;
     width: 50px;
     height: 50px;
@@ -437,7 +437,7 @@ color:#9537FF;
 .profileEditButton div{
     width: 20px;
     height: 20px;
-    background: url('../public/editing.png');
+    background: url('/editing.png');
     background-repeat: no-repeat;
     background-size: cover;
     margin-right: 10px;

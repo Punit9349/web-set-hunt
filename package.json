@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.4",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "font-awesome": "^4.7.0",

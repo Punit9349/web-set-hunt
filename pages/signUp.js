@@ -42,7 +42,7 @@ const SignUp = () => {
       password: passwordRef.current.value,
     };
     const result = await networkRequest("POST", url, data);
-    console.log(result);
+    // console.log(result);
     if (Math.floor(Number(result.status) / 100) === 2) {
       customToast("account created, login", "success");
       router.push("/login");
@@ -53,7 +53,7 @@ const SignUp = () => {
 
   async function handleSignInGoogle() {
     const response = await signIn("google", { callbackUrl: "/lobby" });
-    console.log(response);
+    // console.log(response);
   }
 
   return (

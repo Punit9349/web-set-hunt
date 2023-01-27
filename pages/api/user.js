@@ -3,8 +3,15 @@ import errorCodes from '../../utils/errorCodes';
 import connectToDatabase from "../../utils/database";
 import { verifySession } from "../../utils/auth";
 import { authOptions } from "./auth/[...nextauth]";
+import runMiddleware from "../../utils/cross-site";
 
 const handler = async (req, res) => {
+    try{
+        await runMiddleware(req,res);
+      }
+      catch(error){
+        return res.status(500);
+      }
     const {isValid,session} = await verifySession(req, res, authOptions);
     if (!isValid) {
         return res.status(errorCodes.FORBIDDEN).json({ message: 'Unauthorized!' });
@@ -18,7 +25,7 @@ const handler = async (req, res) => {
             return res.status(errorCodes.SUCCESS).json({ message: 'details updated successfully', user: result });
         }
         catch (error) {
-            console.log(error);
+            // console.log(error);
             return res.status(errorCodes.INTERNAL_ERROR).json({ message: 'error in updating details' });
         }
     }
@@ -30,7 +37,7 @@ const handler = async (req, res) => {
             return res.status(errorCodes.SUCCESS).json({message:'user data fetched successfully',user:reqUser});
         }
         catch(error){
-            console.log(error);
+            // console.log(error);
             return res.status(errorCodes.FORBIDDEN).json({message:'user data fetching failed'});
         }
     }

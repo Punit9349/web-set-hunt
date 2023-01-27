@@ -4,6 +4,12 @@ import connectToDatabase from "../../../utils/database";
 import errorCodes from '../../../utils/errorCodes';
 
 async function handler(req, res) {
+  try{
+    await runMiddleware(req,res);
+  }
+  catch(error){
+    return res.status(500);
+  }
   if (req.method !== 'POST') {
     return;
   }
@@ -45,7 +51,7 @@ async function handler(req, res) {
     res.status(errorCodes.SUCCESS).json({ message: 'Created user!',user });
   }
   catch(error){
-    console.log(error);
+    // console.log(error);
     return res.status(errorCodes.INTERNAL_ERROR).json({message:'error in signing up user'});
   }
 }

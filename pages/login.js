@@ -41,7 +41,7 @@ const Login = () => {
 
   async function handleSignInGoogle(){
     const response = await signIn('google',{callbackUrl:'/lobby'});
-    console.log(response);
+    // console.log(response);
   }
 
   return (

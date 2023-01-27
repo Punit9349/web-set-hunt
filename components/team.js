@@ -26,7 +26,7 @@ function Team() {
                 teamName: teamNameRef.current.value
             };
             const response = await networkRequest('POST', url, data);
-            console.log(response);
+            // console.log(response);
             if (response.status === 200) {
                 customToast(response?.data?.message ? response.data.message : 'Created Team', 'success');
                 const { teamName, teamId } = response.data.team;
@@ -54,9 +54,9 @@ function Team() {
         event.preventDefault();
         if(teamCodeRef && teamCodeRef.current && teamCodeRef.current.value){
             const url = process.env.NEXTAUTH_URL+'/api/team/joinTeam';
-            console.log(teamCodeRef.current.val);
+            // console.log(teamCodeRef.current.val);
             const response = await networkRequest('POST',url,{teamId:teamCodeRef.current.value})
-            console.log(response);
+            // console.log(response);
             if(response.status === 200){
                 const {team,user}=response.data;
                 dispatch(UPDATE_TEAM(team));
