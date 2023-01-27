@@ -73,7 +73,7 @@ function Team() {
 
     return (
         <div className={styles.teamContainer}>
-            <ToastContainer />
+            <ToastContainer theme="colored"/>
             {
                 user && user.teamName && user.teamId ?
                     <div className={styles.teamDetails+" "+styles.teamJoined}>

@@ -58,8 +58,9 @@ color:#9537FF;
 }
 
 .signUpForm input{
-    width: 350px;
-    height: 60px;
+    width: 300px;
+    height: 50px;
+    min-height: 40px;
     padding:5px 10px;
     border:none;
     margin-bottom: 20px;
@@ -73,7 +74,15 @@ color:#9537FF;
     text-align: center;
     margin-top: 20px;
     cursor: pointer;
+    width:fit-content;
+    padding:2px 50px;
+    border-radius: 32px;
 }
+
+.signUpForm input[type='submit']:hover{
+    background-color: #9437ff8a;
+}
+
 
 .signUpForm input:focus{
     outline: none;
@@ -87,9 +96,9 @@ color:#9537FF;
 
 .signUpFormContainer{
     width: 100vw;
-    height: fit-content;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding-top: 60px;
 }
@@ -115,7 +124,7 @@ color:#9537FF;
     width: 100vw;
     height: 100vh;
     position: relative;
-    background-image: url('../public/background.svg');
+    background-image: url('../public/bright.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-color: black;
@@ -192,9 +201,24 @@ color:#9537FF;
     overflow: hidden;
 }
 
+.fullSpaceContainer{
+    width: 40vw;
+    height: 70vh;
+    background-color: #9537FF;
+    opacity: 0.8;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.fullSpace{
+    width:100%; 
+}
+
 .gAquestionsContainer{
     width: 55%;
-    height: 90%;
+    height: 500px;
     background-color: aliceblue;
     margin-left: 20px;
     border-radius: 16px;
@@ -220,6 +244,7 @@ color:#9537FF;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: space-between;
 }
 
 
@@ -238,6 +263,11 @@ color:#9537FF;
     color: white;
     background-color: #2e035f;
     font-weight: 550;
+}
+
+.gAAnswersContainer form input[type='button']:hover{
+   background-color: #D5FC34;
+   color:black;
 }
 
 .gAAnswersContainer input:focus{

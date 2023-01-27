@@ -17,10 +17,14 @@ async function handler(req, res) {
     try {
       await connectToDatabase();
       let currentTime = new Date();
-      let startTime = new Date(process.env.startTime);
-      let endTime = new Date(process.env.endTime);
-      if(Date.parse(currentTime)<Date.parse(startTime) || Date.parse(currentTime)>Date.parse(endTime)){
-        return res.status(errorCodes.BAD_REQUEST).json({message:'contest is from '+ process.env.START_TIME+'to '+process.env.END_TIME});
+      let startTime = new Date(process.env.START_TIME);
+      let endTime = new Date(process.env.END_TIME);
+      console.log(startTime+" "+endTime);
+      if(Date.parse(currentTime)<Date.parse(startTime) ){
+        return res.status(errorCodes.SUCCESS_EVENT_NOT_START).json({message:'contest is from '+ process.env.START_TIME+'to '+process.env.END_TIME});
+      }
+      else if(Date.parse(currentTime)>Date.parse(endTime)){
+        return res.status(errorCodes.SUCCESS_EVENT_ENDED).json({message:'contest is from '+ process.env.START_TIME+'to '+process.env.END_TIME});
       }
       const { email } = session?.user;
       let user = await User.findOne({ email });
@@ -54,10 +58,13 @@ async function handler(req, res) {
       const { email } = session?.user;
       await connectToDatabase();
       let currentTime = new Date();
-      let startTime = new Date(process.env.startTime);
-      let endTime = new Date(process.env.endTime);
-      if(Date.parse(currentTime)<Date.parse(startTime) || Date.parse(currentTime)>Date.parse(endTime)){
-        return res.status(errorCodes.BAD_REQUEST).json({message:'contest is from '+ process.env.START_TIME+'to '+process.env.END_TIME});
+      let startTime = new Date(process.env.START_TIME);
+      let endTime = new Date(process.env.END_TIME);
+      if(Date.parse(currentTime)<Date.parse(startTime) ){
+        return res.status(errorCodes.SUCCESS_EVENT_NOT_START).json({message:'contest is from '+ process.env.START_TIME+'to '+process.env.END_TIME});
+      }
+      else if(Date.parse(currentTime)>Date.parse(endTime)){
+        return res.status(errorCodes.SUCCESS_EVENT_ENDED).json({message:'contest is from '+ process.env.START_TIME+'to '+process.env.END_TIME});
       }
       let user = await User.findOne({ email });
       const teamId = user.teamId;

@@ -60,7 +60,7 @@ const Profile = () => {
 
   return (
     <>
-    <ToastContainer />
+    <ToastContainer theme="colored" />
       <div className={styles.profileContainer}>
             <div className={styles.profileSection}>
               <button className={styles.profileEditButton+ ` ${editable?'':styles.hideButton }`} onClick={onEdit} >

@@ -7,15 +7,17 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'back': "url('/background.png')",
+        back: "url('/background.png')",
       },
       height: {
-        '9/10': '90%',
+        "9/10": "90%",
       },
-      colors:{
-        'neon' : "#D5FC34"
-      }
-    }
+      colors: {
+        neon: "#D5FC34",
+        purpleP: "#9537FF",
+        purpleS: "#ba84f8",
+      },
+    },
   },
   plugins: [],
-}
+};

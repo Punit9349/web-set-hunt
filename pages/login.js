@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import { toast, ToastContainer } from 'react-toastify';
 import customToast, { toastCodes } from '../utils/toast';
 import Layout from '../components/layout';
+import Link from 'next/link';
 
 
 const Login = () => {
@@ -86,6 +87,7 @@ const Login = () => {
                     Log in
                   </button>
                 </div>
+              <Link href='/signUp'><p className='text-xl mt-8 font-bold' style={{color:'#D5FC34',width:'100%',textAlign:'center'}}>Don't have an account?</p></Link>
               </form>
           </div>
             
