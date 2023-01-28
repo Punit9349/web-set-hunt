@@ -32,3 +32,8 @@ yarn-error.log*
 .vercel
 
 .env
+
+
+# round 2 web-set-hunt
+signUp.js
+signup.js

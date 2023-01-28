@@ -61,11 +61,11 @@ const Signlog = () => {
           }}
         >
           <div className="flex justify-center items-center gap-4 text-lg font-semibold m-auto text-white absolute w-full bottom-10  lg:bottom-16 ">
-            <Link href="/signUp/">
+            {/* <Link href="/signUp/">
               <button className="px-6 py-1 rounded-full bg-purpleP hover:bg-purpleS transition-all duration-100">
                 SignUp
               </button>
-            </Link>
+            </Link> */}
             <Link href="/login/">
               <button className="px-6 py-1 rounded-full bg-purpleP hover:bg-purpleS transition-all duration-100">
                 Login

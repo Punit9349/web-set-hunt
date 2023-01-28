@@ -41,6 +41,7 @@ const Login = () => {
 
   async function handleSignInGoogle(){
     const response = await signIn('google',{callbackUrl:'/lobby'});
+    // console.log('heloo');
     // console.log(response);
   }
 
@@ -87,7 +88,7 @@ const Login = () => {
                     Log in
                   </button>
                 </div>
-              <Link href='/signUp'><p className='text-xl mt-8 font-bold cursor-pointer' style={{color:'#D5FC34',width:'100%',textAlign:'center'}}>Don&apos;t have an account?</p></Link>
+              {/* <Link href='/signUp'><p className='text-xl mt-8 font-bold cursor-pointer' style={{color:'#D5FC34',width:'100%',textAlign:'center'}}>Don&apos;t have an account?</p></Link> */}
               </form>
           </div>
             

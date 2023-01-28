@@ -36,15 +36,15 @@ const Timer = () => {
             <div className={styles.countdown_container}>
                 <div className={styles.countdown_ele}>
                     
-                    <div><p className={styles.big_text} id="days">{days}:</p></div>
+                    <div><p className={styles.big_text} id="days">{days} :</p></div>
                     <span className={styles.labels}>Days</span>
                 </div>
                 <div className={styles.countdown_ele}>
-                    <p className={styles.big_text} id="hours">{hours}:</p>
+                    <p className={styles.big_text} id="hours">{hours} :</p>
                     <span className={styles.labels}>hours</span>
                 </div>
                 <div className={styles.countdown_ele}>
-                    <p className={styles.big_text} id="mins">{minutes}:</p>
+                    <p className={styles.big_text} id="mins">{minutes} :</p>
                     <span className={styles.labels}>mins</span>
                 </div>
                 <div className={styles.countdown_ele}>

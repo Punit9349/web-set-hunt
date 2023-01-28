@@ -28,7 +28,7 @@ function Questions() {
       }
       else if (response.status === 201) {
         customToast('All questions done!', 'success');
-        dispatch(UPDATE_QUESTION({ questionNo: '', questionURL: '' }));
+        dispatch(UPDATE_QUESTION({ questionNo: 100, questionURL: '' }));
         setDisable(true);
       }
     }
