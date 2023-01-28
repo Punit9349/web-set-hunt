@@ -92,6 +92,7 @@ async function handler(req, res) {
       if(submittedAns){
         submittedAns = submittedAns.toLowerCase();
       }
+      // console.log(submittedAns + " " +ques.questionAns.toLowerCase());
       if (submittedAns !== ques.questionAns.toLowerCase()) {
         return res.status(errorCodes.SUCCESS_WRONG_ANS).json({ message: "Wrong answer" });
       }

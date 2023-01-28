@@ -16,6 +16,7 @@ const Leader = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const loader = useSelector((state)=>state.loader);
+  const [loading,setLoading]= useState(false);
 
   useEffect(() => {
     async function fetchLeaderBoard() {
@@ -24,6 +25,7 @@ const Leader = () => {
       // console.log(response);
       if (response.status === 200) {
         // console.log(response.data.leaderboard);
+        setLoading(false);
         dispatch(UPDATE_LEADER(response.data.leaderboard));
       }
     }
@@ -31,6 +33,7 @@ const Leader = () => {
     const endTime = new Date(process.env.END_TIME);
     const current = new Date();
     if(Date.parse(current)<Date.parse(endTime)&&Date.parse(current)>Date.parse(startTime)){
+      setLoading(true);
       fetchLeaderBoard();
       if(loader){
         dispatch(REMOVE_LOADER());
@@ -40,6 +43,10 @@ const Leader = () => {
       dispatch(SHOW_LOADER());
     }
   }, []);
+
+  if(loading){
+    return <p style={{color:'#9537FF',fontSize:'2rem',fontWeight:'800'}}>Loading...</p>
+  }
 
   return leaderBoard && leaderBoard.length > 0 && user ? (
     <>
@@ -195,7 +202,7 @@ const Leader = () => {
       </div>
     </>
   ) : (
-    <></>
+    <><p style={{color:'#9537FF',fontSize:'2rem',fontWeight:'800'}}>Will be available soon...</p></>
   );
 };
 
