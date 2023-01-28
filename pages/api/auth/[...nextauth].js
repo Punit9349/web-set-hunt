@@ -20,6 +20,7 @@ export const authOptions = {
         }
         let user = await User.findOne({
           email: credentials.email,
+          
         });
         const set = new Set(['r19zf8', 'lxirc7', 'kt1mr2', 'tl0owl', 'rwok0q', 'w48etu', 'ln8ffc'
         , 'feeffy', 'nr1efv', 'kzy8hz', 'm2ds18', 'l7kr3x', '3xhwoh', 'n7u5h1',
