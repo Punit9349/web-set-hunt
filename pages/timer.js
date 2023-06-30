@@ -10,7 +10,7 @@ const Timer = () => {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
-    const eventDate = new Date('2023-01-27T21:00:30').getTime();
+    const eventDate = new Date(process.env.START_TIME).getTime();
     const intervalId = setInterval(() => {
       const currentDate = new Date().getTime();
       const remainingTime = eventDate - currentDate;
@@ -30,20 +30,21 @@ const Timer = () => {
     return () => clearInterval(intervalId);
   }, []);
   return (
-    <div className={styles.body}>
+    <>
+
         <h1 className={styles.h1}>Coming Soon</h1>
             <div className={styles.countdown_container}>
                 <div className={styles.countdown_ele}>
                     
-                    <div><p className={styles.big_text} id="days">{days}:</p></div>
+                    <div><p className={styles.big_text} id="days">{days} :</p></div>
                     <span className={styles.labels}>Days</span>
                 </div>
                 <div className={styles.countdown_ele}>
-                    <p className={styles.big_text} id="hours">{hours}:</p>
+                    <p className={styles.big_text} id="hours">{hours} :</p>
                     <span className={styles.labels}>hours</span>
                 </div>
                 <div className={styles.countdown_ele}>
-                    <p className={styles.big_text} id="mins">{minutes}:</p>
+                    <p className={styles.big_text} id="mins">{minutes} :</p>
                     <span className={styles.labels}>mins</span>
                 </div>
                 <div className={styles.countdown_ele}>
@@ -51,7 +52,7 @@ const Timer = () => {
                     <span className={styles.labels}>seconds</span>
                 </div>
             </div>
-    </div>
+    </>
   )
 }
 

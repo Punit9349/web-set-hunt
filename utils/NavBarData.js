@@ -25,11 +25,11 @@ export const NavbarData = [
 		icon: <MdOutlineLeaderboard size='40' />,
 		cName: 'whMenuItem',
 	},
-	{
-		title: 'Team',
-		value: 3,
-		icon: <RiTeamLine size='40' />,
-		cName: 'whMenuItem',
-	},
+	// {
+	// 	title: 'Team',
+	// 	value: 3,
+	// 	icon: <RiTeamLine size='40' />,
+	// 	cName: 'whMenuItem',
+	// },
 	{},
 ];

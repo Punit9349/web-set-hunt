@@ -13,9 +13,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("/background.svg");
+    /* background-image: url("/background.svg"); */
     justify-content: center;
-
     box-sizing: border-box;
     background-color: black;
 }
@@ -59,8 +58,9 @@ color:#9537FF;
 }
 
 .signUpForm input{
-    width: 350px;
-    height: 60px;
+    width: 300px;
+    height: 50px;
+    min-height: 40px;
     padding:5px 10px;
     border:none;
     margin-bottom: 20px;
@@ -74,7 +74,15 @@ color:#9537FF;
     text-align: center;
     margin-top: 20px;
     cursor: pointer;
+    width:fit-content;
+    padding:2px 50px;
+    border-radius: 32px;
 }
+
+.signUpForm input[type='submit']:hover{
+    background-color: #9437ff8a;
+}
+
 
 .signUpForm input:focus{
     outline: none;
@@ -88,9 +96,9 @@ color:#9537FF;
 
 .signUpFormContainer{
     width: 100vw;
-    height: fit-content;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding-top: 60px;
 }
@@ -103,7 +111,7 @@ color:#9537FF;
 }
 
 .signUpFormMicroLogo{
-    background-image: url('../public/microbus.jpeg');
+    background-image: url('/microbus.jpeg');
     width: 90px;
     height:90px;
     margin-bottom: 20px;
@@ -116,7 +124,7 @@ color:#9537FF;
     width: 100vw;
     height: 100vh;
     position: relative;
-    background-image: url('../public/background.svg');
+    background-image: url('/bright.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-color: black;
@@ -157,27 +165,29 @@ color:#9537FF;
 }
 
 .signUpSocialFb{
-    background-image: url('../public/facebook.png');
+    background-image: url('/facebook.png');
 }
 
 .signUpSocialInsta{
-    background-image: url('../public/insta.png');
+    background-image: url('/insta.png');
 }
 
 
 /* Gaming arena */
 
 .gamingArena{
-    width: 100%;
+    width: 100vw;
     height:100vh;
-    background-image: url('../public/background.svg');
+    background-image: url('/dull_main.gif');
+    background-color: black;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
+    background-position: center;
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    justify-content: center;
 }
 
 .gAquestionsComponent{
@@ -189,7 +199,21 @@ color:#9537FF;
     display: flex;
     align-items: center;
     overflow: hidden;
-    transform: translate(0,10%);
+}
+
+.fullSpaceContainer{
+    width: 40vw;
+    height: 70vh;
+    background-color: #9537FF;
+    opacity: 0.8;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.fullSpace{
+    width:100%; 
 }
 
 .gAquestionsContainer{
@@ -201,20 +225,36 @@ color:#9537FF;
     overflow: hidden;
 }
 
-.gAAnswersContainer{
+.gAquestion{
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: contain;
+}
+
+.gAAnswersContainer {
     margin: auto;
 }
 
-.gAAnswersContainer label{
+.gAAnswersContainer form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+
+.gAAnswersContainer form label{
     font-weight: 650;
     font-size: 20px;
     color:white;
 }
 
-.gAAnswersContainer input{
+.gAAnswersContainer form input{
     padding:10px;
     width: 300px;
     height: 50px;
@@ -223,6 +263,11 @@ color:#9537FF;
     color: white;
     background-color: #2e035f;
     font-weight: 550;
+}
+
+.gAAnswersContainer form input[type='button']:hover{
+   background-color: #D5FC34;
+   color:black;
 }
 
 .gAAnswersContainer input:focus{
@@ -234,13 +279,15 @@ color:#9537FF;
 }
 
 .gamingArenaMicrobusLogo{
-    background-image: url('../public/microbus.jpeg');
+    background-image: url('/microbus.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 90px;
     height: 90px;
-    transform: translate(0,30%);
+    position: absolute;
+    top:28px;
+    left:47%;
 }
 
 /* Navigation bar */
@@ -248,14 +295,13 @@ color:#9537FF;
     position: absolute;
     z-index: 10;
     left:20px;
-    top:18%;
+    top:30%;
 	height:fit-content;
-    /* min-height: 500px; */
-    min-height: 70%;
-    max-height: 80%;
+    min-height: 50%;
+    max-height: 60%;
     background-color: #9537FF;
-    width: 8%;
-	border-radius: 1rem;
+    width: 100px;
+	border-radius: 16px;
 	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 	padding: 3vh;
 	display: flex;
@@ -267,7 +313,7 @@ color:#9537FF;
 .whLogo {
 	width:50px;
     height: 50px;
-    background-image: url('../public/microbus.jpeg');
+    background-image: url('/microbus.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.6;
@@ -314,29 +360,36 @@ color:#9537FF;
 /* profile container */
 
 .profileContainer{
-   width: 100%;
-   /* margin-top: 50px; */
-   height: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+   width: fit-content;
+   height: fit-content;
+}
+
+.profilePicture{    
+    background-image: url('/hacker.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    margin-top: 20px;
 }
 
 .profileSection{
-    width: auto;
-    height: 340px;
+    width: fit-content;
+    height: fit-content;
     background-color: #9537FF;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    position: relative;
 }
 
 .profileDetails{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap:40px 100px;
+    padding:40px
 }
 
 .profileDetail{
@@ -363,6 +416,196 @@ color:#9537FF;
     font-size: 20px;
     color:white
 }
+
+.profileEditButton{
+    position: absolute;
+    width: 110px;
+    height: 40px;
+    right:10px;
+    top: 10px;;
+    background-color: #D5FC34;
+    border-radius: 8px;
+    padding:8px;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 650;
+    cursor: pointer;
+    color:black 
+}
+
+.profileEditButton div{
+    width: 20px;
+    height: 20px;
+    background: url('/editing.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 10px;
+}
+
+
+.hideButton{
+    display: none;
+}
+
+.profileFooterButtons{
+    display: flex;
+    width: 200px;
+    display: flex;
+    height: fit-content;
+    justify-content: space-between;
+}
+
+.saveChanges{
+    width: 90px;
+    height: 40px;
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: 650;
+    overflow: hidden;
+    background-color: #D5FC34;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+
+/* Team Component */
+.teamContainer{
+    width: 50%;
+    max-width: 400px;
+    height: fit-content;
+    background-color: #9437ff42;
+    display: flex;
+    justify-content: center;
+    border-radius: 16px;
+}
+
+
+.teamDetails{
+    width:350px;
+    height: 350px;
+    /* background-color: black; */
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+.teamJoined{
+    justify-content: space-evenly;
+}
+
+.teamDetails h1{
+    font-weight: 700;
+    font-size: 22px;
+    color:#D5FC34;
+}
+
+.teamNameCode{
+    display: flex;
+    width: 250px;
+    height: fit-content;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teamNameCode label{
+    font-size: 16px;
+    color:#D5FC34;
+    align-self: flex-start;
+    font-weight: 650;
+}
+
+.teamNameCode input{
+    width:100%;
+    height: 40px;
+    border-radius: 8px;
+    padding:10px;
+    background-color: #d4fc34db;
+    color:black;
+    font-size: 17px;
+    border:none;
+}
+
+.teamNameCode input:focus,.teamCreation input:focus{
+    outline:none;
+}
+
+.teamJoiningOptions{
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: antiquewhite; */
+}
+
+.teamJoiningOptions button{
+    width: fit-content;
+    padding:5px 20px;
+    border-radius: 32px;
+    height: fit-content;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 650;
+    color:white;
+}
+
+.teamCreation{
+    width: 100%;
+    height: 200px;
+}
+
+.teamCreation form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+}
+
+.teamCreation form input{
+    width: 85%;
+    max-width: 350px;
+    padding:5px 10px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #9537FF;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.teamCreation form button{
+    color: white;
+    font-size: 20px;
+    font-weight: 650;
+    text-align: center;
+    width: fit-content;
+    padding:5px 20px;
+    height: fit-content;
+    background-color: #9537FF;
+    border-radius: 32px;
+}
+
+.teamCreationButtonActive{
+    background-color: #9537FF;
+}
+
+.teamCreationButtonInActive{
+    background-color: #d4fc34ab;
+}
+
+
+
+
+
+
+
+
 
 
 

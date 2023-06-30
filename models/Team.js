@@ -20,6 +20,7 @@ const teamSchema = new mongoose.Schema({
   },
   solveCount: {
     type: Number,
+    default:0
   },
   position: {
     type: Number,
