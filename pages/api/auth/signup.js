@@ -4,20 +4,18 @@ import connectToDatabase from "../../../utils/database";
 import errorCodes from '../../../utils/errorCodes';
 
 async function handler(req, res) {
-  try{
-    await runMiddleware(req,res);
-  }
-  catch(error){
-    return res.status(500);
-  }
+  console.log('at top')
+  
   if (req.method !== 'POST') {
-    return;
+    console.log('not post')
+    return res.status(500);
   }
   try{
     const data = req.body;
     const { email, password } = data;
     let p = String(password);
     let e = String(email);
+    console.log('at try')
     if (
       !e ||
       !e.includes('@') ||
@@ -31,9 +29,9 @@ async function handler(req, res) {
       return;
     }
   
-    await connectToDatabase();
+    const resp = await connectToDatabase();
     const existingUser = await User.findOne({ email: e });
-  
+    console.log(existingUser)
     if (existingUser) {
       res.status(errorCodes.BAD_REQUEST).json({ message: 'User exists already!' });
       return;
@@ -51,7 +49,7 @@ async function handler(req, res) {
     res.status(errorCodes.SUCCESS).json({ message: 'Created user!',user });
   }
   catch(error){
-    // console.log(error);
+    console.log(error);
     return res.status(errorCodes.INTERNAL_ERROR).json({message:'error in signing up user'});
   }
 }

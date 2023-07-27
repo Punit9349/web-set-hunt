@@ -118,7 +118,7 @@ function Questions() {
             {
               currentQuestion ?
                 <img src={currentQuestion.questionURL?currentQuestion.questionURL:thank.src} className={styles.gAquestion } />
-                : <></>
+                : <><p style={{color:'#9537FF',fontSize:'2rem',fontWeight:'800'}}>Contest is over...</p></>
             }
           </div>
           {
