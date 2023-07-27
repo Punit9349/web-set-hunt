@@ -58,6 +58,7 @@ const Lobby = () => {
           {lobbyValue === 0 ? <Questions /> :
             lobbyValue === 1 ? <Profile /> :
               lobbyValue === 2 ? <Leader /> : 
+              lobbyValue === 3? <Team />:
               <></>}
 
         </div>

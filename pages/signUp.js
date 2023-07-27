@@ -28,6 +28,7 @@ const SignUp = () => {
 
   async function signUpHandler(event) {
     event.preventDefault();
+    // console.log(process.env.NEXTAUTH_URL)
     if (!emailRef || !passwordRef || !rePasswordRef) {
       customToast("Fill all the input fields", "warning");
       return;

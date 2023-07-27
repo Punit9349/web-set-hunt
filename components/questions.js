@@ -16,20 +16,30 @@ function Questions() {
   const user = useSelector((state) => state.user);
   const loader = useSelector((state) => state.loader);
   const [disable, setDisable] = useState(false);
+  const [loading,setLoading]=useState(false);
 
   useEffect(() => {
     async function fetchQuestion() {
       const url = process.env.NEXTAUTH_URL + '/api/questions';
-      const response = await networkRequest('GET', url, {});
-      // console.log(response);
-      if (response.status === 200) {
-        const { questionNo, questionURL } = response.data;
-        dispatch(UPDATE_QUESTION({ questionNo, questionURL }));
+      setLoading(true);
+      try{
+        const response = await networkRequest('GET', url, {});
+        // console.log(response);
+        if (response.status === 200) {
+          const { questionNo, questionURL } = response.data;
+          dispatch(UPDATE_QUESTION({ questionNo, questionURL }));
+        }
+        else if (response.status === 201) {
+          customToast('All questions done!', 'success');
+          dispatch(UPDATE_QUESTION({ questionNo: 100, questionURL: '' }));
+          setDisable(true);
+        }
       }
-      else if (response.status === 201) {
-        customToast('All questions done!', 'success');
-        dispatch(UPDATE_QUESTION({ questionNo: 100, questionURL: '' }));
-        setDisable(true);
+      catch(error){
+        console.log(error)
+      }
+      finally{
+        setLoading(false);
       }
     }
 
@@ -112,13 +122,16 @@ function Questions() {
     user ? user.teamName ?
       loader ?
         <Timer /> 
-        : <div className={styles.gAquestionsComponent+`${disable?styles.fullSpaceContainer:''}`}>
+        : loading?
+        <p style={{color:'#9537FF',fontSize:'2rem',fontWeight:'800'}}>Loading...</p>
+        :
+        <div className={styles.gAquestionsComponent+`${disable?styles.fullSpaceContainer:''}`}>
           <ToastContainer theme="colored" />
           <div className={styles.gAquestionsContainer+`${disable?styles.fullSpace:''}`} >
             {
               currentQuestion ?
                 <img src={currentQuestion.questionURL?currentQuestion.questionURL:thank.src} className={styles.gAquestion } />
-                : <></>
+                : <><p style={{color:'#9537FF',fontSize:'2rem',fontWeight:'800'}}>Contest is over...</p></>
             }
           </div>
           {

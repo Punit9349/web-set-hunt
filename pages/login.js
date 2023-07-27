@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {signIn,useSession} from 'next-auth/react';;
 import bg_login from '../public/bg_login.png';
 import micro from '../public/microbus.jpeg';
@@ -16,6 +16,7 @@ const Login = () => {
   const passwordRef= useRef();
   const router = useRouter();
   const {data:session,status}=useSession();
+  const [loading,setLoading]=useState(false);
 
   useEffect(()=>{
     if(status!=="loading"){
@@ -28,19 +29,38 @@ const Login = () => {
   
   async function submitHandler(event){
     event.preventDefault();
-    const result = await signIn('credentials',{
-      redirect:false,
-      email:emailRef.current.value,
-      password:passwordRef.current.value,
-      callbackUrl:'/lobby'
-    },);
-    if(!result.ok){
+    try{
+      setLoading(true);
+      const result = await signIn('credentials',{
+        redirect:false,
+        email:emailRef.current.value,
+        password:passwordRef.current.value,
+        callbackUrl:'/lobby'
+      },);
+      
+    }
+    catch(error){
+      console.log(error)
       customToast('login failed',toastCodes.FAILURE);
     }
+    finally{
+      setLoading(false)
+    }
+    
   }
 
   async function handleSignInGoogle(){
-    const response = await signIn('google',{callbackUrl:'/lobby'});
+    try{
+      setLoading(true)
+      const response = await signIn('google',{callbackUrl:'/lobby'});
+    }
+    catch(error){
+      console.log(error)
+      customToast('login failed',toastCodes.FAILURE);
+    }
+    finally{
+      setLoading(false);
+    }
     // console.log('heloo');
     // console.log(response);
   }
@@ -63,6 +83,14 @@ const Login = () => {
     <div className='h-screen w-full relative'>
       <ToastContainer />
       <div className='px-8 w-full h-full bg-pos no-repeat ' style={{'background':`url(${bg_login.src})`}}>
+        {
+          loading?
+          <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'800px'}}>
+      <p style={{color:'#9537FF',fontSize:'2rem',fontWeight:'800',width:'fit-content'}}>Loading...</p>
+
+        </div>
+          :
+            <>
           <div className='w-full flex justify-center items-center py-6 overflow-hidden'>
             <img className='w-16' src={micro.src} alt="micro" />
           </div>
@@ -88,9 +116,11 @@ const Login = () => {
                     Log in
                   </button>
                 </div>
-              {/* <Link href='/signUp'><p className='text-xl mt-8 font-bold cursor-pointer' style={{color:'#D5FC34',width:'100%',textAlign:'center'}}>Don&apos;t have an account?</p></Link> */}
+              <Link href='/signUp'><p className='text-xl mt-8 font-bold cursor-pointer' style={{color:'#D5FC34',width:'100%',textAlign:'center'}}>Don&apos;t have an account?</p></Link>
               </form>
           </div>
+          </>
+        }
             
       </div>
       <SocialMediaFooter />
