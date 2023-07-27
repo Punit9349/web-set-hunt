@@ -22,11 +22,11 @@ export const authOptions = {
           email: credentials.email,
           
         });
-        const set = new Set(['r19zf8', 'lxirc7', 'kt1mr2', 'tl0owl', 'rwok0q', 'w48etu', 'ln8ffc'
-        , 'feeffy', 'nr1efv', 'kzy8hz', 'm2ds18', 'l7kr3x', '3xhwoh', 'n7u5h1',
-         'fq6thq', 'yu220t', 'lfmhkk', 'z4zxf6','q6uaiw', 'oh2hml','3t9lx7','rahahm','2fcmw0',
-        'wm111y','xtxnrk','yw11xu','nqyv97','l45fv7','5n4l19','wd7cfw','q2whz2','xderze']);
-        if (!user || !user.teamId || !set.has(user.teamId)) {
+        // const set = new Set(['r19zf8', 'lxirc7', 'kt1mr2', 'tl0owl', 'rwok0q', 'w48etu', 'ln8ffc'
+        // , 'feeffy', 'nr1efv', 'kzy8hz', 'm2ds18', 'l7kr3x', '3xhwoh', 'n7u5h1',
+        //  'fq6thq', 'yu220t', 'lfmhkk', 'z4zxf6','q6uaiw', 'oh2hml','3t9lx7','rahahm','2fcmw0',
+        // 'wm111y','xtxnrk','yw11xu','nqyv97','l45fv7','5n4l19','wd7cfw','q2whz2','xderze']);
+        if (!user || !user.teamId) {
           return null;
         }
         const isValid = await verifyPassword(credentials.password, user.password);
